@@ -7,7 +7,7 @@ const ErrorPage = () => {
   return (
     <section className="h-full my-auto ">
       <div className="h-full  flex flex-col justify-center items-center">
-        <div className="w-3/4 lg:w-3/6 mt-28 lg:mt-16">
+        <div className="w-3/4 lg:w-1/3 mt-28 lg:mt-24">
           <Lottie animationData={errorAni} loop={true} />
         </div>
         <div className=" text-center">

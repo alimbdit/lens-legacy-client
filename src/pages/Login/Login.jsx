@@ -150,7 +150,7 @@ const Login = () => {
               </div>
               <p className="mt-4">
                 Don&apos;t have an account?{" "}
-                <Link className="text-info underline" to="/login">
+                <Link className="text-info underline" to="/signup">
                   Sign Up
                 </Link>
               </p>

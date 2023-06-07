@@ -38,10 +38,52 @@ const SignUp = () => {
   const from = location.state?.from?.from?.pathname;
 
   const onSubmit = (data) => {
-    
+    const { name, email, photo, role, password } = data;
+    if (!photo) {
+      data.photo = defaultPhoto;
+    }
+    setSignUpError("");
+    setSignUpSuccess("");
+
+    createUser(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        setSignUpError("");
+        setSignUpSuccess("Sign Up successful");
+        updateUserProfile(name, photo)
+          .then(() => {
+            console.log("profile update");
+            Swal.fire(sweetAlert);
+            navigate(from || "/login", { replace: true });
+            reset();
+          })
+          .catch((err) => {
+            setSignUpSuccess("");
+            setSignUpError(err?.code.split("/")[1].split("-").join(" "));
+          });
+      })
+      .catch((err) => {
+        setSignUpSuccess("");
+        setSignUpError(err?.code.split("/")[1].split("-").join(" "));
+      });
   };
 
-  
+  const continueWithGoogle = () => {
+    googleLogin()
+      .then((result) => {
+        setSignUpError("");
+        setSignUpSuccess("Sign up successful");
+        setUser(result.user);
+        navigate(from || "/");
+        Swal.fire(sweetAlert);
+        // console.log(result.user);
+      })
+      .catch((err) => {
+        setSignUpSuccess("");
+        setSignUpError(err?.code.split("/")[1].split("-").join(" "));
+      });
+  };
 
   return (
     <>
@@ -130,6 +172,7 @@ const SignUp = () => {
                   </span>
                 )}
               </div>
+
               <div className="form-control mb-5">
                 <div className="relative">
                   <input
@@ -165,11 +208,6 @@ const SignUp = () => {
                     Confirm Password is required{" "}
                   </span>
                 )}
-                <label className="label">
-                  <Link to="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </Link>
-                </label>
               </div>
 
               <div className="">

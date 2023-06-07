@@ -1,7 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink} from "react-router-dom";
 import logo from "../../../../public/logo.png";
+import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
+
+  const {user, logOut} = useAuth()
+
   const navOptions = <><li>
   <NavLink
     to="/"
@@ -26,14 +30,17 @@ const Navbar = () => {
     Classes
   </NavLink>
 </li>
-<li>
+{
+  user && user.email && <li>
   <NavLink
     to="/dashboard"
     className={({ isActive }) => (isActive ? "active" : "inactive")}
   >
     Dashboard
   </NavLink>
-</li></>;
+</li>
+}
+</>;
 
   return (
     <>
@@ -65,8 +72,8 @@ const Navbar = () => {
           </div>
           <div className="flex justify-center items-center gap-2">
             <img className="w-8 h-8" src={logo} alt="" />
-            <h1 className="text-2xl lg:text-4xl font-bold">
-              Lens <span className="">Legacy</span>
+            <h1 className="text-2xl lg:text-4xl font-extrabold">
+              <span className="text-secondary">Lens</span> <span >Legacy</span>
             </h1>
           </div>
         </div>
@@ -76,10 +83,11 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end lg:w-full">
-          <div className="dropdown dropdown-end">
+          {
+            user && user?.email ? <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+              <div className="w-10 border border-primary rounded-full">
+                <img referrerPolicy = "no-referrer" src={user?.photoURL} />
               </div>
             </label>
             <ul
@@ -87,10 +95,11 @@ const Navbar = () => {
               className=" dropdown-content text-center mt-3 p-2 shadow bg-base-100 rounded-box w-24 hover:bg-primary duration-300 hover:text-white cursor-pointer"
             >
               <li>
-                <button className="font-semibold ">Logout</button>
+                <button onClick={logOut} className="font-semibold ">Logout</button>
               </li>
             </ul>
-          </div>
+          </div> : <Link className="btn btn-primary" to='/login'>Login</Link>
+          }
         </div>
       </div>
     </>
