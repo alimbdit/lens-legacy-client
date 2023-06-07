@@ -1,23 +1,76 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
-import {FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 
 import regAni from "../../../public/reg.json";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
+
+const sweetAlert = {
+  position: "center",
+  icon: "success",
+  title: "Login Successful",
+  showConfirmButton: false,
+  timer: 1500,
+};
 
 const Login = () => {
+  const { logIn, googleLogin, setUser } = useAuth();
   const [show, setShow] = useState(false);
   const [loginError, setLoginError] = useState("");
   const [loginSuccess, setLoginSuccess] = useState("");
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+  const onSubmit = (data) => {
+    setLoginError("");
+    setLoginSuccess("");
+    console.log(data);
+    const { email, password } = data;
+    logIn(email, password)
+      .then((result) => {
+        setUser(result.user);
+        setLoginError("");
+        setLoginSuccess("Login successful");
+        navigate(from, { replace: true });
+        Swal.fire(sweetAlert);
+      })
+      .catch((err) => {
+        setLoginSuccess("");
+        setLoginError(err?.code.split("/")[1].split("-").join(" "));
+      });
+  };
+
+  const continueWithGoogle = () => {
+    setLoginError("");
+    setLoginSuccess("");
+    googleLogin()
+      .then((result) => {
+        setLoginError("");
+        setLoginSuccess("Login successful");
+        setUser(result.user);
+        navigate(from, { replace: true });
+        Swal.fire(sweetAlert);
+        reset();
+      })
+      .catch((err) => {
+        setLoginSuccess("");
+        setLoginError(err?.code.split("/")[1].split("-").join(" "));
+      });
+  };
 
   return (
     <>
@@ -39,7 +92,9 @@ const Login = () => {
                 />
                 {/* errors will return when field validation fails  */}
                 {errors.email && (
-                  <span className="text-error text-sm mt-1">Email is required</span>
+                  <span className="text-error text-sm mt-1">
+                    Email is required
+                  </span>
                 )}
               </div>
               <div className="form-control">
@@ -50,7 +105,7 @@ const Login = () => {
                     className="input focus:outline-offset-0 input-bordered w-full"
                     {...register("password", {
                       required: true,
-                    //   pattern: /^(?=.*?[A-Z])(?=.*?[#?!@$%^&*-]).{6,}$/,
+                      //   pattern: /^(?=.*?[A-Z])(?=.*?[#?!@$%^&*-]).{6,}$/,
                     })}
                   />
                   {show ? (
@@ -72,13 +127,19 @@ const Login = () => {
                   </span>
                 )} */}
                 {errors.password?.type === "required" && (
-                  <span className="text-error text-sm mt-1">Password is required </span>
+                  <span className="text-error text-sm mt-1">
+                    Password is required{" "}
+                  </span>
                 )}
                 <label className="label">
                   <Link to="#" className="label-text-alt link link-hover">
                     Forgot password?
                   </Link>
                 </label>
+              </div>
+              <div className="">
+                <p className="text-red-500">{loginError}</p>
+                <p className="text-green-500">{loginSuccess}</p>
               </div>
               <div className="form-control mt-6">
                 <input
@@ -87,13 +148,23 @@ const Login = () => {
                   value="Login"
                 />
               </div>
+              <p className="mt-4">
+                Don&apos;t have an account?{" "}
+                <Link className="text-info underline" to="/login">
+                  Sign Up
+                </Link>
+              </p>
             </form>
-
 
             {/* social login */}
             <div className="divider">OR</div>
             <div className="flex justify-center">
-                <span className="border-2 rounded-full bg-primary bg-opacity-30 p-[2px] hover:bg-opacity-50"><FcGoogle className="text-4xl cursor-pointer"/></span>
+              <button
+                onClick={continueWithGoogle}
+                className="border-2 rounded-full bg-primary bg-opacity-30 p-[2px] hover:bg-opacity-50"
+              >
+                <FcGoogle className="text-4xl cursor-pointer" />
+              </button>
             </div>
           </div>
         </div>

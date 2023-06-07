@@ -1,28 +1,47 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
-import {FcGoogle } from "react-icons/fc";
-
+import { FcGoogle } from "react-icons/fc";
 import regAni from "../../../public/reg.json";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
+
+const defaultPhoto = "https://i.ibb.co/fNy36Zz/user.png";
+
+const sweetAlert = {
+  position: "center",
+  icon: "success",
+  title: "Sign Up Successful",
+  showConfirmButton: false,
+  timer: 1500,
+};
 
 const SignUp = () => {
+  const { googleLogin, setUser, createUser, updateUserProfile } = useAuth();
   const [show, setShow] = useState(false);
   const [confirmShow, setConfirmShow] = useState(false);
-  const [registrationError, setRegistrationError] = useState("");
-  const [registrationSuccess, setRegistrationSuccess] = useState("");
+  const [signUpError, setSignUpError] = useState("");
+  const [signUpSuccess, setSignUpSuccess] = useState("");
 
   const {
     register,
     handleSubmit,
+    reset,
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
 
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.from?.pathname;
+
+  const onSubmit = (data) => {
+    
   };
+
+  
 
   return (
     <>
@@ -43,7 +62,9 @@ const SignUp = () => {
                 />
                 {/* errors will return when field validation fails  */}
                 {errors.name && (
-                  <span className="text-error text-sm mt-1">Name is required</span>
+                  <span className="text-error text-sm mt-1">
+                    Name is required
+                  </span>
                 )}
               </div>
               <div className="form-control mb-5">
@@ -55,7 +76,9 @@ const SignUp = () => {
                 />
                 {/* errors will return when field validation fails  */}
                 {errors.email && (
-                  <span className="text-error text-sm mt-1">Email is required</span>
+                  <span className="text-error text-sm mt-1">
+                    Email is required
+                  </span>
                 )}
               </div>
               <div className="form-control mb-5">
@@ -63,11 +86,13 @@ const SignUp = () => {
                   type="url"
                   placeholder="PhotoURL"
                   className="input input-bordered focus:outline-offset-0"
-                  {...register("photo", { required: true })}
+                  {...register("photo")}
                 />
                 {/* errors will return when field validation fails  */}
                 {errors.photo && (
-                  <span className="text-error text-sm mt-1">PhotoURL is required</span>
+                  <span className="text-error text-sm mt-1">
+                    PhotoURL is required
+                  </span>
                 )}
               </div>
               <div className="form-control mb-5">
@@ -93,10 +118,6 @@ const SignUp = () => {
                     />
                   )}
                 </div>
-                {/* {registrationError && (
-                  <span className="text-error text-sm mt-1">
-                    {registrationError}
-                  </span> */}
                 {errors.password?.type === "pattern" && (
                   <span className="text-error text-sm mt-1">
                     Password should contain at least one uppercase, one special
@@ -104,7 +125,9 @@ const SignUp = () => {
                   </span>
                 )}
                 {errors.password?.type === "required" && (
-                  <span className="text-error text-sm mt-1">Password is required </span>
+                  <span className="text-error text-sm mt-1">
+                    Password is required{" "}
+                  </span>
                 )}
               </div>
               <div className="form-control mb-5">
@@ -148,25 +171,41 @@ const SignUp = () => {
                   </Link>
                 </label>
               </div>
+
+              <div className="">
+                <p className="text-red-500">{signUpError}</p>
+                <p className="text-green-500">{signUpSuccess}</p>
+              </div>
               <input
-                    type="text"
-                    value="student"
-                    className="input hidden focus:outline-offset-0 input-bordered w-full"
-                    {...register("role")}
-                  />
-              <div className="form-control mt-6">
+                type="text"
+                value="student"
+                className="hidden"
+                {...register("role")}
+              />
+              <div className="form-control mt-4">
                 <input
                   className="btn btn-primary"
                   type="submit"
                   value="Sign Up "
                 />
               </div>
+              <p className="mt-4">
+                Already have an account?{" "}
+                <Link className="text-info underline" to="/login">
+                  Login
+                </Link>
+              </p>
             </form>
 
             {/* social login */}
             <div className="divider">OR</div>
             <div className="flex justify-center">
-                <span className="border-2 rounded-full bg-primary bg-opacity-30 p-[2px] hover:bg-opacity-50"><FcGoogle className="text-4xl cursor-pointer"/></span>
+              <button
+                onClick={continueWithGoogle}
+                className="border-2 cursor-pointer rounded-full bg-primary bg-opacity-30 p-[2px] hover:bg-opacity-50"
+              >
+                <FcGoogle className="text-4xl " />
+              </button>
             </div>
           </div>
         </div>
