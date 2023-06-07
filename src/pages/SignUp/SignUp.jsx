@@ -148,6 +148,12 @@ const SignUp = () => {
                   </Link>
                 </label>
               </div>
+              <input
+                    type="text"
+                    value="student"
+                    className="input hidden focus:outline-offset-0 input-bordered w-full"
+                    {...register("role")}
+                  />
               <div className="form-control mt-6">
                 <input
                   className="btn btn-primary"
