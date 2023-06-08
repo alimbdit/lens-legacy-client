@@ -1,5 +1,11 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { MdClass, MdPayments, MdAddToPhotos } from "react-icons/md";
+import {
+  MdClass,
+  MdPayments,
+  MdAddToPhotos,
+  MdOutlineHotelClass,
+  MdManageAccounts,
+} from "react-icons/md";
 import { FaHome } from "react-icons/fa";
 import { SiGoogleclassroom } from "react-icons/si";
 import useAuth from "../../hooks/useAuth";
@@ -27,6 +33,58 @@ const Dashboard = () => {
           }
         >
           <MdPayments /> My Enrolled Classes
+        </NavLink>
+      </li>
+    </>
+  );
+
+  const instructorNavOptions = (
+    <>
+      {" "}
+      <li>
+        <NavLink
+          to="/dashboard/addClass"
+          className={({ isActive }) =>
+            isActive ? "active-dashboard" : "inactive-dashboard"
+          }
+        >
+          <MdAddToPhotos className="text-xl"/> Add a Class
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/dashboard/myClass"
+          className={({ isActive }) =>
+            isActive ? "active-dashboard" : "inactive-dashboard"
+          }
+        >
+          <SiGoogleclassroom /> My Classes
+        </NavLink>
+      </li>
+    </>
+  );
+
+  const adminNavOptions = (
+    <>
+      {" "}
+      <li>
+        <NavLink
+          to="/dashboard/manageClasses"
+          className={({ isActive }) =>
+            isActive ? "active-dashboard" : "inactive-dashboard"
+          }
+        >
+          <MdOutlineHotelClass className="text-2xl" /> Manage Classes
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/dashboard/manageUsers"
+          className={({ isActive }) =>
+            isActive ? "active-dashboard" : "inactive-dashboard"
+          }
+        >
+          <MdManageAccounts className="text-2xl" /> Manage Users
         </NavLink>
       </li>
     </>
@@ -74,26 +132,9 @@ const Dashboard = () => {
 
             {/* {studentNavOptions} */}
 
-            <li>
-              <NavLink
-                to="/dashboard/addClass"
-                className={({ isActive }) =>
-                  isActive ? "active-dashboard" : "inactive-dashboard"
-                }
-              >
-                <MdAddToPhotos /> Add a Class
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/dashboard/myClass"
-                className={({ isActive }) =>
-                  isActive ? "active-dashboard" : "inactive-dashboard"
-                }
-              >
-                <SiGoogleclassroom /> My Classes
-              </NavLink>
-            </li>
+            {instructorNavOptions}
+
+            {/* {adminNavOptions} */}
           </ul>
         </div>
       </div>
