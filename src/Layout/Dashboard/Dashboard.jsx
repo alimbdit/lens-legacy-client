@@ -105,7 +105,7 @@ const Dashboard = () => {
     <div>
       <div className="drawer lg:drawer-open">
         <input id="dashboard-menu" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-center">
+        <div className="drawer-content flex flex-col items-center ">
           {/* Page content here */}
           <label
             htmlFor="dashboard-menu"
@@ -141,9 +141,9 @@ const Dashboard = () => {
               </NavLink>
             </li>
 
-            {studentNavOptions}
+            {/* {studentNavOptions} */}
 
-            {/* {instructorNavOptions} */}
+            {instructorNavOptions}
 
             {/* {adminNavOptions} */}
           </ul>

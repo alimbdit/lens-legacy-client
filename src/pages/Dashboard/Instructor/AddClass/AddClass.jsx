@@ -2,11 +2,13 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 
 const AddClass = () => {
 
     const {user} = useAuth();
     const navigate = useNavigate();
+    const [axiosSecure] = useAxiosSecure();
 
     const hosting_imag_url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGE_UPLOAD_TOKEN}`
 
@@ -35,17 +37,19 @@ const AddClass = () => {
             // console.log(imgUrl)
             const {className, email, instructorName, price, seat, status
             } = data;
-            const newClass = {className, email, instructorName, price: parseFloat(price), seat: parseInt(seat), status, imgUrl}
+            const newClass = {className, email, instructorName, price: parseFloat(price), seat: parseInt(seat), status, imgUrl, enrolledStudent: 0}
             // console.log(newClass)
-            fetch(`${import.meta.env.VITE_BASE_URL}/newClass`, {
-                method: "POST",
-                headers: {
-                    'content-type':"application/json"
-                },
-                body: JSON.stringify(newClass)
-            }).then(res=>res.json())
+            // fetch(`${import.meta.env.VITE_BASE_URL}/newClass`, {
+            //     method: "POST",
+            //     headers: {
+            //         'content-type':"application/json"
+            //     },
+            //     body: JSON.stringify(newClass)
+            // })
+            axiosSecure.post(`/newClass`, newClass)
+            // .then(res=>res.json())
             .then(data => {
-              if(data.insertedId){
+              if(data.data.insertedId){
                 Swal.fire({
                   position: 'center',
                   icon: 'success',
@@ -137,12 +141,12 @@ const AddClass = () => {
           <div className="flex lg:gap-5 flex-col lg:flex-row">
           <div className="">
             <label className="label">
-              <span className="">Price</span>
+              <span className="">Fees</span>
             </label>
             <input
               type="text"
               
-              placeholder="Price"
+              placeholder="$"
               className="input w-[300px] input-bordered focus:border-transparent"
               {...register("price", { required: true })}
             />
@@ -163,6 +167,7 @@ const AddClass = () => {
           </div>
           </div>
           <input type="text" value='pending' className=" hidden" {...register("status")} />
+        
           
           <div className="form-control mt-6">
                 <input
