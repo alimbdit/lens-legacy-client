@@ -9,3 +9,10 @@
 .inactive {
     @apply text-lg text-black
 }
+
+.active-dashboard {
+    @apply text-lg text-white
+}
+.inactive-dashboard {
+    @apply text-lg text-black
+}
