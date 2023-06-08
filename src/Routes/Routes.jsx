@@ -7,6 +7,8 @@ import SignUp from "../pages/SignUp/SignUp";
 import ErrorPage from "../pages/ErrorPage";
 import SelectedClass from "../pages/Dashboard/Student/SelectedClass/SelectedClass";
 import EnrolledClass from "../pages/Dashboard/Student/EnrolledClass/EnrolledClass";
+import AddClass from "../pages/Dashboard/Instructor/AddClass/AddClass";
+import MyClasses from "../pages/Dashboard/Instructor/MyClasses/MyClasses";
 
 
 
@@ -42,7 +44,15 @@ export const router = createBrowserRouter([
           {
             path: 'enrolledClass',
             element: <EnrolledClass></EnrolledClass>
-          }
+          },
+          {
+            path: 'addClass',
+            element: <AddClass></AddClass>
+          },
+          {
+            path: 'myClass',
+            element: <MyClasses></MyClasses>
+          },
         ]
     },
   ]);

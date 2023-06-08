@@ -1,9 +1,37 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { MdClass, MdPayments } from "react-icons/md";
+import { MdClass, MdPayments, MdAddToPhotos } from "react-icons/md";
+import { FaHome } from "react-icons/fa";
+import { SiGoogleclassroom } from "react-icons/si";
 import useAuth from "../../hooks/useAuth";
 
 const Dashboard = () => {
   const { user } = useAuth();
+
+  const studentNavOptions = (
+    <>
+      <li>
+        <NavLink
+          to="/dashboard/selectedClass"
+          className={({ isActive }) =>
+            isActive ? "active-dashboard" : "inactive-dashboard"
+          }
+        >
+          <MdClass /> My Selected Classes
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/dashboard/enrolledClass"
+          className={({ isActive }) =>
+            isActive ? "active-dashboard" : "inactive-dashboard"
+          }
+        >
+          <MdPayments /> My Enrolled Classes
+        </NavLink>
+      </li>
+    </>
+  );
+
   return (
     <div>
       <div className="drawer lg:drawer-open">
@@ -31,25 +59,39 @@ const Dashboard = () => {
               </div>
               <h3 className="text-lg">{user?.email}</h3>
             </div>
-            <div className="divider"></div> 
+            <div className="divider"></div>
+
             <li>
               <NavLink
-                to="/dashboard/selectedClass"
+                to="/"
                 className={({ isActive }) =>
                   isActive ? "active-dashboard" : "inactive-dashboard"
                 }
               >
-                <MdClass /> My Selected Classes
+                <FaHome /> Home
+              </NavLink>
+            </li>
+
+            {/* {studentNavOptions} */}
+
+            <li>
+              <NavLink
+                to="/dashboard/addClass"
+                className={({ isActive }) =>
+                  isActive ? "active-dashboard" : "inactive-dashboard"
+                }
+              >
+                <MdAddToPhotos /> Add a Class
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="/dashboard/enrolledClass"
+                to="/dashboard/myClass"
                 className={({ isActive }) =>
                   isActive ? "active-dashboard" : "inactive-dashboard"
                 }
               >
-                <MdPayments /> My Enrolled Classes
+                <SiGoogleclassroom /> My Classes
               </NavLink>
             </li>
           </ul>
