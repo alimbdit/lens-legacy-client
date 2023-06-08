@@ -59,6 +59,7 @@ const Login = () => {
     setLoginSuccess("");
     googleLogin()
       .then((result) => {
+        console.log(result)
         setLoginError("");
         setLoginSuccess("Login successful");
         setUser(result.user);

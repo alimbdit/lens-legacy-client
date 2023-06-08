@@ -35,6 +35,16 @@ const Dashboard = () => {
           <MdPayments /> My Enrolled Classes
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to="/dashboard/paymentHistory"
+          className={({ isActive }) =>
+            isActive ? "active-dashboard" : "inactive-dashboard"
+          }
+        >
+          <MdPayments /> Payment History
+        </NavLink>
+      </li>
     </>
   );
 
@@ -94,7 +104,7 @@ const Dashboard = () => {
     <div>
       <div className="drawer lg:drawer-open">
         <input id="dashboard-menu" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-start">
+        <div className="drawer-content flex flex-col items-center justify-center">
           {/* Page content here */}
           <label
             htmlFor="dashboard-menu"
@@ -102,7 +112,7 @@ const Dashboard = () => {
           >
             Menu
           </label>
-          <Outlet></Outlet>
+          <Outlet className="w-full"></Outlet>
         </div>
         <div className="drawer-side">
           <label htmlFor="dashboard-menu" className="drawer-overlay"></label>
