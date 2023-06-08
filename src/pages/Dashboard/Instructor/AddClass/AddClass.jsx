@@ -1,15 +1,19 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../../../hooks/useAuth";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddClass = () => {
 
     const {user} = useAuth();
+    const navigate = useNavigate();
 
     const hosting_imag_url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGE_UPLOAD_TOKEN}`
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -40,7 +44,19 @@ const AddClass = () => {
                 },
                 body: JSON.stringify(newClass)
             }).then(res=>res.json())
-            .then(data => console.log(data))
+            .then(data => {
+              if(data.insertedId){
+                Swal.fire({
+                  position: 'center',
+                  icon: 'success',
+                  title: 'Class added successful!',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+                reset();
+                navigate('/dashboard/myClass')
+              }
+            })
         }
     })
 
@@ -137,9 +153,9 @@ const AddClass = () => {
           </div>
           <div className="">
             <label className="label">
-              <span className="">Image</span>
+              <span className="">Class Image</span>
             </label>
-            <input type="file" className="file-input file-input-bordered w-[300px] input-bordered focus:border-transparent " {...register("image", { required: true })} />
+            <input type="file" className="file-input file-input-bordered w-[300px] focus:border-transparent " {...register("image", { required: true })} />
             <br />
 
             {/* errors will return when field validation fails  */}

@@ -7,6 +7,7 @@ import {
   MdManageAccounts,
 } from "react-icons/md";
 import { FaHome } from "react-icons/fa";
+import { GiWallet } from "react-icons/gi";
 import { SiGoogleclassroom } from "react-icons/si";
 import useAuth from "../../hooks/useAuth";
 
@@ -42,7 +43,7 @@ const Dashboard = () => {
             isActive ? "active-dashboard" : "inactive-dashboard"
           }
         >
-          <MdPayments /> Payment History
+          <GiWallet /> Payment History
         </NavLink>
       </li>
     </>
@@ -140,9 +141,9 @@ const Dashboard = () => {
               </NavLink>
             </li>
 
-            {/* {studentNavOptions} */}
+            {studentNavOptions}
 
-            {instructorNavOptions}
+            {/* {instructorNavOptions} */}
 
             {/* {adminNavOptions} */}
           </ul>

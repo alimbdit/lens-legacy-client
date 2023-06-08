@@ -53,10 +53,26 @@ const SignUp = () => {
         setSignUpSuccess("Sign Up successful");
         updateUserProfile(name, photo)
           .then(() => {
+            const newUser = {name, email, photo, role}
+            
+            fetch(`${import.meta.env.VITE_BASE_URL}/newUsers`, {
+              method: "POST",
+              headers: {
+                'content-type': 'application/json'
+              },
+              body: JSON.stringify(newUser)
+            })
+            .then(res=>res.json())
+            .then(result => {
+              if(result.insertedId){
+                Swal.fire(sweetAlert);
+                navigate(from || "/login", { replace: true });
+                reset();
+              }
+            })
+
             console.log("profile update");
-            Swal.fire(sweetAlert);
-            navigate(from || "/login", { replace: true });
-            reset();
+            
           })
           .catch((err) => {
             setSignUpSuccess("");
@@ -72,6 +88,22 @@ const SignUp = () => {
   const continueWithGoogle = () => {
     googleLogin()
       .then((result) => {
+        const savedUser = {name: result?.user?.displayName, email:result?.user?.email, photo: result?.user?.photoURL || defaultPhoto, role:"student" };
+        fetch(`${import.meta.env.VITE_BASE_URL}/newUsers`, {
+          method: "POST",
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(savedUser)
+        })
+        .then(res=>res.json())
+        .then(() => {
+          // if(result.insertedId){
+          //   Swal.fire(sweetAlert);
+          //   navigate(from || "/login", { replace: true });
+          //   reset();
+          // }
+        })
         setSignUpError("");
         setSignUpSuccess("Sign up successful");
         setUser(result.user);

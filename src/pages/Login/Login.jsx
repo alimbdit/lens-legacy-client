@@ -8,6 +8,7 @@ import Lottie from "lottie-react";
 import regAni from "../../../public/reg.json";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+const defaultPhoto = "https://i.ibb.co/fNy36Zz/user.png";
 
 const sweetAlert = {
   position: "center",
@@ -60,6 +61,23 @@ const Login = () => {
     googleLogin()
       .then((result) => {
         console.log(result)
+        const savedUser = {name: result?.user?.displayName, email:result?.user?.email, photo: result?.user?.photoURL || defaultPhoto, role:"student" };
+        fetch(`${import.meta.env.VITE_BASE_URL}/newUsers`, {
+          method: "POST",
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(savedUser)
+        })
+        .then(res=>res.json())
+        .then(() => {
+          // if(result.insertedId){
+          //   Swal.fire(sweetAlert);
+          //   navigate(from || "/login", { replace: true });
+          //   reset();
+          // }
+        })
+
         setLoginError("");
         setLoginSuccess("Login successful");
         setUser(result.user);
