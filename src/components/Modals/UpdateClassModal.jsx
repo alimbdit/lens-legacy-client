@@ -15,8 +15,7 @@ const sweetAlert = {
 };
 
 const UpdateClassModal = ({ isOpen, closeModal, updateItem, refetch }) => {
-  const { user } = useAuth();
-  const navigate = useNavigate();
+
   const [axiosSecure] = useAxiosSecure();
 
   console.log(updateItem);
@@ -24,13 +23,13 @@ const UpdateClassModal = ({ isOpen, closeModal, updateItem, refetch }) => {
     import.meta.env.VITE_IMAGE_UPLOAD_TOKEN
   }`;
 
-  const { _id, price, seat, className, imgUrl } = updateItem;
+  const { _id, price, seat, clsName, imgUrl } = updateItem;
   //   console.log(price, className)
 
   const handleUpdate = (event) => {
     event.preventDefault();
     const form = event.target;
-    const className = form.newClassName.value;
+    const clsName = form.newClassName.value;
     const price = form.newPrice.value;
     const seat = form.newSeat.value;
     const image = form.image.files;
@@ -50,7 +49,7 @@ const UpdateClassModal = ({ isOpen, closeModal, updateItem, refetch }) => {
           if (result.success) {
             const imgUrl = result.data.display_url;
             const newClass = {
-              className,
+              clsName,
               price: parseFloat(price),
               seat: parseInt(seat),
               imgUrl,
@@ -68,7 +67,7 @@ const UpdateClassModal = ({ isOpen, closeModal, updateItem, refetch }) => {
         });
     } else {
       const newClass = {
-        className,
+        clsName,
         price: parseFloat(price),
         seat: parseInt(seat),
         imgUrl,
@@ -128,7 +127,7 @@ const UpdateClassModal = ({ isOpen, closeModal, updateItem, refetch }) => {
 
                           <input
                             type="text"
-                            defaultValue={className}
+                            defaultValue={clsName}
                             placeholder="Class Name"
                             className="input w-full lg:w-[300px]  input-bordered focus:border-transparent"
                             name="newClassName"

@@ -35,9 +35,9 @@ const AddClass = () => {
         if(result.success){
             const imgUrl = result.data.display_url;
             // console.log(imgUrl)
-            const {className, email, instructorName, price, seat, status
+            const {clsName, email, instructor, price, seat, status
             } = data;
-            const newClass = {className, email, instructorName, price: parseFloat(price), seat: parseInt(seat), status, imgUrl, enrolledStudent: 0}
+            const newClass = {clsName, email, instructor, price: parseFloat(price), seat: parseInt(seat), status, imgUrl, enrolledStudent: 0}
             // console.log(newClass)
             // fetch(`${import.meta.env.VITE_BASE_URL}/newClass`, {
             //     method: "POST",
@@ -80,12 +80,12 @@ const AddClass = () => {
               type="text"
               placeholder="Class Name"
               className="input w-[300px]  input-bordered focus:border-transparent"
-              {...register("className", { required: true })}
+              {...register("clsName", { required: true })}
             />
             <br />
 
             {/* errors will return when field validation fails  */}
-            {errors.className && <span className="text-red-500">Class Name is required</span>}
+            {errors.clsName && <span className="text-red-500">Class Name is required</span>}
           </div>
           <div className="">
             <label className="label">
@@ -96,12 +96,12 @@ const AddClass = () => {
               type="text"
               placeholder="Instructor Name"
               className="input w-[300px] input-bordered focus:border-transparent "
-              {...register("instructorName", { required: true })}
+              {...register("instructor", { required: true })}
             />
             <br />
 
             {/* errors will return when field validation fails  */}
-            {errors.instructorName && <span className="text-red-500">Instructor Name is required</span>}
+            {errors.instructor && <span className="text-red-500">Instructor Name is required</span>}
           </div>
           </div>
           <div className="flex lg:gap-5 flex-col lg:flex-row">

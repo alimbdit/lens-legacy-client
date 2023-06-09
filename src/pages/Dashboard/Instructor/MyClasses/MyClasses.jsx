@@ -75,7 +75,7 @@ const MyClasses = () => {
                     
                     <td className="text-center">
                       <div>
-                        <div className="font-bold">{item?.className}</div>
+                        <div className="font-bold">{item?.clsName}</div>
                       </div>
                     </td>
                     <td className="text-center">
