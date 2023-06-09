@@ -126,6 +126,8 @@ const Dashboard = () => {
                   <img src={user?.photoURL} />
                 </div>
               </div>
+              <h3 className="text-lg">{user?.displayName}</h3>
+              <hr className="my-1 w-3/4 mx-auto"/>
               <h3 className="text-lg">{user?.email}</h3>
             </div>
             <div className="divider"></div>
@@ -143,9 +145,9 @@ const Dashboard = () => {
 
             {/* {studentNavOptions} */}
 
-            {instructorNavOptions}
+            {/* {instructorNavOptions} */}
 
-            {/* {adminNavOptions} */}
+            {adminNavOptions}
           </ul>
         </div>
       </div>
