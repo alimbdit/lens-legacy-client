@@ -1,8 +1,13 @@
 
-const ManageClassRow = ({item, index}) => {
+
+const ManageClassRow = ({item, index, handleApprove, handleDeny, openModal, setFeedbackId}) => {
+
+
+
     const {_id, clsName, email, price, seat, status, imgUrl, instructor} = item;
     // console.log(_id, clsName, email, price, seat, status, imgUrl, instructor)
-    // console.log(item)
+ 
+
     return (
         <>
             <tr className="text-lg">
@@ -36,9 +41,12 @@ const ManageClassRow = ({item, index}) => {
                 <td className="text-center capitalize">{status}</td>
                 <th >
                   <div className="flex flex-col items-center justify-center gap-1">
-                  <button className="btn btn-primary w-full btn-sm">Aprove</button>
-                  <button className="btn btn-warning w-full btn-sm">Deny</button>
-                  <button className="btn btn-info w-full btn-sm">Feedback</button>
+                  <button disabled={item?.status !== 'pending'} onClick={()=>handleApprove(item)} className="btn btn-primary w-full text-white btn-sm">Approve</button>
+                  <button disabled={item?.status !== 'pending'} onClick={()=> handleDeny(item)} className="btn btn-warning w-full text-white btn-sm">Deny</button>
+                  <button onClick={()=>{
+                    openModal()
+                    setFeedbackId(_id)
+                  }} className="btn btn-info w-full text-white btn-sm">Feedback</button>
                   </div>
                 </th>
               </tr>
