@@ -48,7 +48,7 @@ const SignUp = () => {
     createUser(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
+        // console.log(loggedUser);
         setSignUpError("");
         setSignUpSuccess("Sign Up successful");
         updateUserProfile(name, photo)

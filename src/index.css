@@ -16,3 +16,10 @@
 .inactive-dashboard {
     @apply text-lg text-black
 }
+
+.btn-manage{
+    @apply border-2 border-white hover:rounded-full hover:border-orange-300 hover:duration-75 hover:text-orange-200 hover:ease-in  rounded px-3 py-2 font-semibold transition-all
+}
+.btn-manage-disabled{
+    @apply border-2 text-stone-500 border-stone-500 bg-stone-700 rounded px-3 py-2 font-semibold transition-all
+}

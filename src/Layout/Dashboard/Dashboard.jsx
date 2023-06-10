@@ -103,9 +103,9 @@ const Dashboard = () => {
 
   return (
     <div>
-      <div className="drawer lg:drawer-open">
+      <div className="drawer lg:drawer-open w-full">
         <input id="dashboard-menu" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center ">
+        <div className="drawer-content flex flex-col items-center">
           {/* Page content here */}
           <label
             htmlFor="dashboard-menu"

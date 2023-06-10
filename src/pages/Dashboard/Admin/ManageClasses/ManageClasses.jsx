@@ -5,6 +5,7 @@ import ManageClassRow from "./ManageClassRow";
 import { toast } from "react-hot-toast";
 import { useState } from "react";
 import FeedbackModal from "../../../../components/Modals/FeedbackModal";
+import ManageClassesCard from "./ManageClassesCard";
 
 
 const ManageClasses = () => {
@@ -78,7 +79,7 @@ const ManageClasses = () => {
         Manage Classes: {classes.length}
       </h1>
 
-      <div className="max-w-sm lg:max-w-fit ">
+      {/* <div className="max-w-sm lg:max-w-fit ">
         <div className="overflow-x-auto h-[450px] lg:h-[510px]">
           <table className="table table-pin-rows">
             <thead>
@@ -109,6 +110,14 @@ const ManageClasses = () => {
           </table>
         <FeedbackModal feedbackId={feedbackId} openModal={openModal} isOpen={isOpen} closeModal={closeModal} refetch={refetch}></FeedbackModal>
         </div>
+        
+      </div> */}
+      <div className="w-full flex flex-col gap-5 mt-5">
+      {
+          classes?.map(item => <ManageClassesCard handleApprove={handleApprove}
+            handleDeny={handleDeny} openModal={openModal} setFeedbackId={setFeedbackId} key={item._id} item={item}></ManageClassesCard>)
+        }
+         <FeedbackModal feedbackId={feedbackId}  openModal={openModal} isOpen={isOpen} closeModal={closeModal} refetch={refetch}></FeedbackModal>
       </div>
     </div>
   );

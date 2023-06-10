@@ -75,14 +75,14 @@ const FeedbackModal = ({ openModal, isOpen, closeModal, feedbackId, refetch }) =
                       <input
                         type="submit"
                         value="SEND"
-                        className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                        className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 cursor-pointer"
                         onClick={closeModal}
                       />
                     </div>
                     </form>
                   </div>
                   <div className="mt-4 fixed top-0 right-4">
-                    <button className="btn btn-circle btn-sm bg-red-500 hover:bg-red-600" onClick={closeModal}>
+                    <button className="btn btn-circle  btn-sm bg-red-500 hover:bg-red-600" onClick={closeModal}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-6 w-6"
