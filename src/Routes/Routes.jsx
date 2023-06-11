@@ -13,6 +13,9 @@ import ManageClasses from "../pages/Dashboard/Admin/ManageClasses/ManageClasses"
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers/ManageUsers";
 import PaymentHistory from "../pages/Dashboard/Student/PaymentHistory/PaymentHistory";
 import PrivateRoute from "./PrivateRoute";
+import Classes from "../pages/Classes/Classes";
+import Instructors from "../pages/Instructors/Instructors";
+
 
 
 
@@ -33,6 +36,14 @@ export const router = createBrowserRouter([
         {
           path: '/signup',
           element: <SignUp></SignUp>
+        },
+        {
+          path: '/classes',
+          element: <Classes></Classes>
+        },
+        {
+          path: '/instructors',
+          element: <Instructors></Instructors>
         },
       ]
     },

@@ -33,6 +33,7 @@ const ManageUsersRow = ({item, index, handleRole}) => {
             <th >
               <div className="flex flex-col items-center justify-center gap-1">
               <button disabled={role === 'admin'} onClick={()=>handleRole(_id,"admin", name)} className="btn hover:bg-orange-600 hover:border-orange-600 border-2 border-orange-600 bg-transparent text-orange-600 w-full hover:text-white text-base">Make Admin</button>
+              
               <button disabled={role === 'instructor'} onClick={()=> handleRole(_id, "instructor", name)} className="btn hover:bg-info hover:border-info border-2 border-info bg-transparent text-info w-full hover:text-white text-base">Make Instructor</button>
               
               </div>

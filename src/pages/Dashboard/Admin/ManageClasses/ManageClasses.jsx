@@ -112,7 +112,7 @@ const ManageClasses = () => {
         </div>
         
       </div> */}
-      <div className="w-full flex flex-col gap-5 mt-5">
+      <div className="w-full flex flex-col gap-5 mt-7">
       {
           classes?.map(item => <ManageClassesCard handleApprove={handleApprove}
             handleDeny={handleDeny} openModal={openModal} setFeedbackId={setFeedbackId} key={item._id} item={item}></ManageClassesCard>)

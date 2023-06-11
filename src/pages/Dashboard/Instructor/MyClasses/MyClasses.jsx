@@ -52,8 +52,8 @@ const MyClasses = () => {
                 <th className="text-center">Class Name</th>
                 <th className="text-center">Status</th>
                 <th className="text-end">Fees</th>
-                <th className="text-center">Available Seat</th>
-                <th className="text-center">Enrolled Students</th>
+                <th className="text-center">Available <br/> Seat</th>
+                <th className="text-center">Enrolled <br/> Students</th>
                 <th>Feedback</th>
                 <th>Action</th>
               </tr>
@@ -75,12 +75,12 @@ const MyClasses = () => {
                     
                     <td className="text-center">
                       <div>
-                        <div className="font-bold">{item?.clsName}</div>
+                        <div className="font-bold capitalize">{item?.clsName}</div>
                       </div>
                     </td>
                     <td className="text-center">
                       <div>
-                        <div className="font-bold">{item?.status}</div>
+                        <div className="font-bold capitalize">{item?.status}</div>
                       </div>
                     </td>
                     <td className="text-end">${item?.price}</td>
