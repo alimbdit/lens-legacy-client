@@ -15,6 +15,7 @@ import PaymentHistory from "../pages/Dashboard/Student/PaymentHistory/PaymentHis
 import PrivateRoute from "./PrivateRoute";
 import Classes from "../pages/Classes/Classes";
 import Instructors from "../pages/Instructors/Instructors";
+import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 
 
 
@@ -52,6 +53,10 @@ export const router = createBrowserRouter([
         element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         errorElement: <ErrorPage></ErrorPage>,
         children: [
+          {
+            path:'dashboard',
+            element:<DashboardHome></DashboardHome>
+          },
           {
             path: 'selectedClass',
             element: <SelectedClass></SelectedClass>

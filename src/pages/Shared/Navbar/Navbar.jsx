@@ -33,7 +33,7 @@ const Navbar = () => {
 {
   user && user.email && <li>
   <NavLink
-    to="/dashboard"
+    to="/dashboard/dashboard"
     className={({ isActive }) => (isActive ? "active" : "inactive")}
   >
     Dashboard

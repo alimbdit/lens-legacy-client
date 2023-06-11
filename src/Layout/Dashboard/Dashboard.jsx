@@ -6,13 +6,19 @@ import {
   MdOutlineHotelClass,
   MdManageAccounts,
 } from "react-icons/md";
-import { FaHome } from "react-icons/fa";
-import { GiWallet } from "react-icons/gi";
+import { FaHome, FaTachometerAlt, FaChalkboardTeacher } from "react-icons/fa";
+import { GiWallet, GiTeacher } from "react-icons/gi";
 import { SiGoogleclassroom } from "react-icons/si";
 import useAuth from "../../hooks/useAuth";
+import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
 
 const Dashboard = () => {
   const { user } = useAuth();
+  const [isAdmin, isAdminLoading] = useAdmin();
+const [isInstructor, isInstructorLoading] = useInstructor();
+  console.log(isAdmin, 'admin')
+  console.log(isInstructor, 'isInstructor')
 
   const studentNavOptions = (
     <>
@@ -130,8 +136,30 @@ const Dashboard = () => {
               <hr className="my-1 w-3/4 mx-auto"/>
               <h3 className="text-lg">{user?.email}</h3>
             </div>
-            <div className="divider"></div>
+            <div className="divider my-2"></div>
+            <li>
+              <NavLink
+                to="/dashboard/dashboard"
+                className={({ isActive }) =>
+                  isActive ? "active-dashboard" : "inactive-dashboard"
+                }
+              >
+                <FaTachometerAlt /> {isAdmin? "Admin" : isInstructor ? "Instructor" : "Student"}
+              </NavLink>
+            </li>
 
+            {
+              isAdmin ? adminNavOptions : isInstructor ? instructorNavOptions : studentNavOptions
+            }
+            
+
+            {/* {studentNavOptions} */}
+
+            {/* {instructorNavOptions} */}
+
+            {/* {adminNavOptions} */}
+
+            <div className="divider my-2"></div>
             <li>
               <NavLink
                 to="/"
@@ -142,12 +170,26 @@ const Dashboard = () => {
                 <FaHome /> Home
               </NavLink>
             </li>
-
-            {/* {studentNavOptions} */}
-
-            {/* {instructorNavOptions} */}
-
-            {adminNavOptions}
+            <li>
+              <NavLink
+                to="/instructors"
+                className={({ isActive }) =>
+                  isActive ? "active-dashboard" : "inactive-dashboard"
+                }
+              >
+                <FaChalkboardTeacher /> Instructors
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/classes"
+                className={({ isActive }) =>
+                  isActive ? "active-dashboard" : "inactive-dashboard"
+                }
+              >
+                <GiTeacher /> Classes
+              </NavLink>
+            </li>
           </ul>
         </div>
       </div>

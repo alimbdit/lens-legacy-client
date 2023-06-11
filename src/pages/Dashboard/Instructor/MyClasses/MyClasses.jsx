@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../../hooks/useAuth";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { useState } from "react";
-import { BiEdit } from 'react-icons/bi';
+import { BiEdit } from "react-icons/bi";
 
 import UpdateClassModal from "../../../../components/Modals/UpdateClassModal";
 
@@ -12,29 +12,25 @@ const MyClasses = () => {
   let [isOpen, setIsOpen] = useState(false);
   const [updateItem, setUpdateItem] = useState({});
 
-  const {data:classes=[], refetch} = useQuery({
-      queryKey: ['classes', user?.email],
-      enabled:!loading,
-      queryFn: async() => {
-          if(!user){
-              return []
-          }
-          const result = await axiosSecure.get(`/myClass?email=${user?.email}`);
-          return result.data;
+  const { data: classes = [], refetch } = useQuery({
+    queryKey: ["classes", user?.email],
+    enabled: !loading,
+    queryFn: async () => {
+      if (!user) {
+        return [];
       }
-  })
-
-  
+      const result = await axiosSecure.get(`/myClass?email=${user?.email}`);
+      return result.data;
+    },
+  });
 
   function closeModal() {
-    setIsOpen(false)
+    setIsOpen(false);
   }
 
   function openModal() {
-    setIsOpen(true)
+    setIsOpen(true);
   }
-
-
 
   return (
     <div className="my-4 w-full max-w-sm lg:max-w-fit px-5">
@@ -44,7 +40,6 @@ const MyClasses = () => {
       <div className="max-w-sm lg:max-w-fit">
         <div className="overflow-x-auto ">
           <table className="table">
- 
             <thead>
               <tr className="text-lg">
                 <th>#</th>
@@ -52,8 +47,12 @@ const MyClasses = () => {
                 <th className="text-center">Class Name</th>
                 <th className="text-center">Status</th>
                 <th className="text-end">Fees</th>
-                <th className="text-center">Available <br/> Seat</th>
-                <th className="text-center">Enrolled <br/> Students</th>
+                <th className="text-center">
+                  Available <br /> Seat
+                </th>
+                <th className="text-center">
+                  Enrolled <br /> Students
+                </th>
                 <th>Feedback</th>
                 <th>Action</th>
               </tr>
@@ -72,15 +71,27 @@ const MyClasses = () => {
                         </div>
                       </div>
                     </td>
-                    
+
                     <td className="text-center">
                       <div>
-                        <div className="font-bold capitalize">{item?.clsName}</div>
+                        <div className="font-bold capitalize">
+                          {item?.clsName}
+                        </div>
                       </div>
                     </td>
                     <td className="text-center">
                       <div>
-                        <div className="font-bold capitalize">{item?.status}</div>
+                        <div
+                          className={`font-bold capitalize ${
+                            item?.status === "approved"
+                              ? "text-green-600"
+                              : item?.status === "denied"
+                              ? "text-red-600"
+                              : "text-info"
+                          }`}
+                        >
+                          {item?.status}
+                        </div>
                       </div>
                     </td>
                     <td className="text-end">${item?.price}</td>
@@ -95,21 +106,26 @@ const MyClasses = () => {
                       </p>
                     </td>
                     <th>
-                      <button onClick={() => {
-                        openModal();
-                        setUpdateItem(item);
-                        
-                      }}  className="bg-info hover:bg-opacity-75 p-2 rounded-lg  "><BiEdit className="text-3xl text-white"/></button>
-                     
+                      <button
+                        onClick={() => {
+                          openModal();
+                          setUpdateItem(item);
+                        }}
+                        className="bg-info hover:bg-opacity-75 p-2 rounded-lg  "
+                      >
+                        <BiEdit className="text-3xl text-white" />
+                      </button>
                     </th>
-                    
                   </tr>
-                  
-                 
                 ))}
             </tbody>
           </table>
-          <UpdateClassModal isOpen={isOpen} updateItem={updateItem} closeModal={closeModal} refetch={refetch}></UpdateClassModal>
+          <UpdateClassModal
+            isOpen={isOpen}
+            updateItem={updateItem}
+            closeModal={closeModal}
+            refetch={refetch}
+          ></UpdateClassModal>
         </div>
       </div>
     </div>
