@@ -1,6 +1,6 @@
 
 
-const ClassCard = ({item}) => {
+const ClassCard = ({item, isInstructor, isAdmin, handleSelect}) => {
     const {_id, clsName, email, price, seat, status, imgUrl, instructor} = item;
 
   return (
@@ -20,8 +20,8 @@ const ClassCard = ({item}) => {
         <p>Available Seats : {seat}</p>
         <p>Fees : ${price}</p>
         </div>
-        <div className="card-actions justify-end mt-auto">
-          <button  disabled={!seat} className={seat ?"btn-manage":"btn-manage-disabled"}>Select</button>
+        <div onClick={()=> handleSelect(_id)} className="card-actions justify-end mt-auto">
+          <button  disabled={!seat || isInstructor || isAdmin} className={!seat || isAdmin || isInstructor ? "btn-manage-disabled" : "btn-manage"}>Select</button>
     
 
         </div>

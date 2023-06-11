@@ -5,12 +5,13 @@ import ManageUsersRow from "./ManageUsersRow";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import Swal from "sweetalert2";
+import Loading from "../../../../components/Loading/Loading";
 
 const ManageUsers = () => {
   const { user, loading } = useAuth();
   const [axiosSecure] = useAxiosSecure();
 
-  const { data: users = [], refetch } = useQuery({
+  const { data: users = [], refetch, isLoading: isUserLoading } = useQuery({
     queryKey: ["users", user?.email],
     enabled: !loading,
     queryFn: async () => {
@@ -38,6 +39,10 @@ const ManageUsers = () => {
             refetch()
         }
     }).catch(error => console.log(error))
+  }
+
+  if(isUserLoading){
+    return <Loading></Loading>
   }
 
   return (

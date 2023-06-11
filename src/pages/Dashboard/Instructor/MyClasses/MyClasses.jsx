@@ -5,6 +5,7 @@ import { useState } from "react";
 import { BiEdit } from "react-icons/bi";
 
 import UpdateClassModal from "../../../../components/Modals/UpdateClassModal";
+import Loading from "../../../../components/Loading/Loading";
 
 const MyClasses = () => {
   const { user, loading } = useAuth();
@@ -12,7 +13,7 @@ const MyClasses = () => {
   let [isOpen, setIsOpen] = useState(false);
   const [updateItem, setUpdateItem] = useState({});
 
-  const { data: classes = [], refetch } = useQuery({
+  const { data: classes = [], refetch, isLoading: isMyClassLoading } = useQuery({
     queryKey: ["classes", user?.email],
     enabled: !loading,
     queryFn: async () => {
@@ -30,6 +31,10 @@ const MyClasses = () => {
 
   function openModal() {
     setIsOpen(true);
+  }
+
+  if(isMyClassLoading){
+    return <Loading></Loading>
   }
 
   return (

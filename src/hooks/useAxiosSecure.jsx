@@ -13,6 +13,11 @@ const useAxiosSecure = () => {
 
   useEffect(() => {
     axiosSecure.interceptors.request.use((request) => {
+      const token = localStorage.getItem('access-token');
+      // console.log(request, token)
+      if(token){
+        request.headers.Authorization = `Bearer ${token}`
+      }
       return request;
     });
     axiosSecure.interceptors.response.use(

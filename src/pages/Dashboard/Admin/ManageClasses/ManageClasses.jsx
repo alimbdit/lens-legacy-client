@@ -6,6 +6,7 @@ import { toast } from "react-hot-toast";
 import { useState } from "react";
 import FeedbackModal from "../../../../components/Modals/FeedbackModal";
 import ManageClassesCard from "./ManageClassesCard";
+import Loading from "../../../../components/Loading/Loading";
 
 
 const ManageClasses = () => {
@@ -15,7 +16,7 @@ const ManageClasses = () => {
   const [feedbackId, setFeedbackId]=useState(null)
 
   
-  const { data: classes = [], refetch } = useQuery({
+  const { data: classes = [], refetch, isLoading: isClassLoading } = useQuery({
     queryKey: ["classes", user?.email],
     enabled: !loading,
     queryFn: async () => {
@@ -70,6 +71,10 @@ const ManageClasses = () => {
     }
     return;
   };
+
+  if(isClassLoading){
+    return <Loading></Loading>
+  }
 
   
 

@@ -2,6 +2,7 @@
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { app } from './../firebase/firebase.config';
+import axios from "axios";
 
  const auth = getAuth(app);
  export const AuthContext = createContext(null);
@@ -46,15 +47,25 @@ const AuthProvider = ({children}) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (loggedInUser) => {
       // console.log('logged in user inside auth state observer', loggedUser);
-      setLoading(false)
       
       setUser(loggedInUser);
+      if(loggedInUser){
+        axios.post(`${import.meta.env.VITE_BASE_URL}/jwt`, {email: loggedInUser?.email}).then(response => {
+          localStorage.setItem('access-token', response.data.token)
+          setLoading(false)
+        })
+      }
+      else{
+        localStorage.removeItem('access-token')
+        setLoading(false)
+      }
+      
 
     });
     return () => {
       unSubscribe();
     };
-  }, [loading]);
+  }, []);
 
   const AuthInfo = {user, googleLogin, loading, setLoading, logIn, createUser, setUser, logOut, auth, updateUserProfile   };
 
