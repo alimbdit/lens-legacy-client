@@ -9,23 +9,27 @@ import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const sweetAlert = {
-    position: "center",
-    icon: "success",
-    title: "login for select class!",
-    showConfirmButton: false,
-    timer: 1500,
-  };
+  position: "center",
+  icon: "warning",
+  title: "login for select class!",
+  showConfirmButton: false,
+  timer: 1500,
+};
 
 const Classes = () => {
-  const {user, loading} = useAuth();
+  const { user, loading } = useAuth();
   const [axiosSecure] = useAxiosSecure();
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
   const location = useLocation();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const { data: allClass = [], refetch, isLoading } = useQuery({
+  const {
+    data: allClass = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["allClass"],
     queryFn: async () => {
       const response = await axiosSecure.get("approvedClasses");
@@ -33,51 +37,59 @@ const Classes = () => {
     },
   });
 
-  const handleSelect = async(id) => {
-    if(!user){
-        Swal.fire(sweetAlert);
-        return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
-    }
-    await axiosSecure.post(`/userSelect/${user?.email}`, {classId: id})
-    .then(result => {
-        if(result.data.modifiedCount > 0){
+  const handleSelect = async (id) => {
+    if (!user) {
+      Swal.fire(sweetAlert);
+      navigate("/login", { state: { from: location } });
+    } else {
+      await axiosSecure
+        .post(`/userSelect/${user?.email}`, { classId: id })
+        .then((result) => {
+          if (result.data.modifiedCount > 0) {
             Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Class is selected!",
-                showConfirmButton: false,
-                timer: 1500,
-              });
-              navigate('/dashboard/selectedClass')
-        }
-    })
-    .catch(error => {
-        console.log(error)
-        Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Class is selected!",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            navigate("/dashboard/selectedClass");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          Swal.fire({
             position: "center",
             icon: "error",
             title: `${error.response.data.message}`,
             showConfirmButton: false,
             timer: 1500,
           });
-    })
+        });
+    }
+  };
 
-  }
-
-  if(isLoading ){
-    return <Loading></Loading>
+  if (isLoading) {
+    return <Loading></Loading>;
   }
 
   return (
     <div className="lg:px-10">
       <h1 className="text-5xl font-bold my-4 text-center">
-      {allClass.length} Classes 
+        {allClass.length} Classes
       </h1>
 
       <div className="px-5 grid grid-cols-1 lg:grid-cols-2 gap-5  mt-10">
-        {
-            allClass && allClass.map(item => <ClassCard handleSelect={handleSelect} isInstructor={isInstructor} isAdmin={isAdmin} item={item} key={item._id}></ClassCard>)
-        }
+        {allClass &&
+          allClass.map((item) => (
+            <ClassCard
+              handleSelect={handleSelect}
+              isInstructor={isInstructor}
+              isAdmin={isAdmin}
+              item={item}
+              key={item._id}
+            ></ClassCard>
+          ))}
       </div>
     </div>
   );

@@ -36,7 +36,7 @@ const SelectedClass = () => {
 
   const handlePayment = (item) => {
     console.log(item)
-    // openModal()
+    refetch()
 
   };
 

@@ -17,7 +17,7 @@ const CheckoutForm = ({ item }) => {
   const [transactionId, setTransactionId] = useState("");
   const navigate = useNavigate()
 
-  const { _id, price } = item;
+  const { _id, price, clsName } = item;
 
   useEffect(() => {
     if (price > 0) {
@@ -77,6 +77,7 @@ const CheckoutForm = ({ item }) => {
         email: user?.email,
         transactionId: paymentIntent.id,
         price,
+        clsName,
         date: new Date(),
         classId: _id,
       };
