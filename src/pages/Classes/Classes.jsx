@@ -76,7 +76,7 @@ const Classes = () => {
   return (
     <div className="lg:px-10">
       <h1 className="text-5xl font-bold my-4 text-center">
-        {allClass.length} Classes
+        Our Classes
       </h1>
 
       <div className="px-5 grid grid-cols-1 lg:grid-cols-2 gap-5  mt-10">

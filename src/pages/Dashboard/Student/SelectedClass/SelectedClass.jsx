@@ -75,7 +75,7 @@ const SelectedClass = () => {
 
   console.log(selectClass);
 
-  if (isSelectLoading) {
+  if (loading || isSelectLoading) {
     return <Loading></Loading>;
   }
 

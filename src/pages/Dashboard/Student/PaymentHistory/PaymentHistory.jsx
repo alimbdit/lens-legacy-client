@@ -27,15 +27,15 @@ const PaymentHistory = () => {
     return (
         <div className="my-4 w-full max-w-sm lg:max-w-fit px-5">
         <h1 className="text-5xl font-bold my-4 text-center">
-          Payment History: {paymentHistory.length}
+          Payment History
         </h1>
   
-        <div className="max-w-sm lg:max-w-fit ">
+        <div className="max-w-sm mt-7 lg:max-w-fit ">
           <div className="overflow-x-auto h-[450px] lg:h-[510px]">
             <table className="table table-pin-rows table-zebra lg:table-fixed">
               <thead>
                 <tr className="text-xl">
-                  <th className="w-3">#</th>
+                  {/* <th className="w-3">#</th> */}
 
                   <th className="text-center">Date</th>
                   <th className="text-center">Class Name</th>

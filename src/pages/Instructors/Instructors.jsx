@@ -29,7 +29,7 @@ const Instructors = () => {
   return (
     <div className="lg:px-10">
       <h1 className="text-5xl font-bold my-4 text-center">
-        Instructors: {instructors.length}
+        Our Instructors
       </h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-5 lg:gap-10 mt-10 px-5">

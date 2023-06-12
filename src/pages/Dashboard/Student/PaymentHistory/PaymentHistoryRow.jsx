@@ -2,13 +2,13 @@ import moment from 'moment';
 
 
 const PaymentHistoryRow = ({ history, index }) => {
-    const { email, transactionId, price, date, clsName, formattedDate} = history;
-    const newDate =  moment(formattedDate).format(" hh:mm A, Do-MMM-YYYY ")
+    const { transactionId, price, date, clsName} = history;
+    const newDate =  moment(date).format(" hh:mm A, Do-MMM-YYYY ")
     console.log(newDate)
     return (
         <>
         <tr className="">
-          <th>{index + 1}</th>
+          {/* <th>{index + 1}</th> */}
           <td className="text-center capitalize">
             <div className="font-semibold capitalize">{newDate}</div>
           </td>
