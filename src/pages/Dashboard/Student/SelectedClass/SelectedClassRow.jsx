@@ -1,8 +1,12 @@
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 const SelectedClassRow = ({item, index, handleDelete, handlePayment}) => {
 
     const {_id, clsName, email, price, seat,  imgUrl, instructor} = item;
+
+    const location = useLocation();
+    const navigate = useNavigate()
 
     return (
         <>
@@ -37,10 +41,11 @@ const SelectedClassRow = ({item, index, handleDelete, handlePayment}) => {
          
             <th >
               <div className="flex flex-col items-center justify-center gap-2">
-              <button onClick={()=>{
+              <button onClick={()=>{ 
                 // openModal()
-                ()=>handlePayment(item)
-              }} disabled={!item?.seat} className="btn btn-info hover:bg-transparent hover:text-info font-semibold border-2 w-full text-white btn-sm h-10 text-base">Pay</button>
+                navigate('/dashboard/payment', { state: item })
+                handlePayment(item)
+              }} disabled={!item?.seat} className={`btn  ${!item?.seat ? 'btn-disabled': 'btn-info hover:bg-transparent hover:text-info border-2 text-white' }  font-semibold  w-full  btn-sm h-10 text-base`}>Pay</button>
               <button  onClick={()=> handleDelete(item)} className="btn btn-warning hover:bg-transparent hover:text-warning font-semibold border-2 w-full text-white btn-sm h-10 text-base">Delete</button>
               
               </div>

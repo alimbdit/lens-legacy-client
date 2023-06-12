@@ -3,12 +3,15 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 import Loading from "../../../../components/Loading/Loading";
 import SelectedClassRow from "./SelectedClassRow";
-import { toast } from "react-hot-toast";
+// import { toast } from "react-hot-toast";
 import Swal from "sweetalert2";
+import PaymentModal from "../../../../components/Modals/PaymentModal";
+import { useState } from "react";
+
 
 const SelectedClass = () => {
   const { user, loading } = useAuth();
-
+  let [isOpen, setIsOpen] = useState(false)
   const [axiosSecure] = useAxiosSecure();
 
   const {
@@ -23,8 +26,19 @@ const SelectedClass = () => {
       return result.data;
     },
   });
+  function closeModal() {
+    setIsOpen(false)
+  }
 
-  const handlePayment = () => {};
+  function openModal() {
+    setIsOpen(true)
+  }
+
+  const handlePayment = (item) => {
+    console.log(item)
+    // openModal()
+
+  };
 
   const handleDelete =  (item) => {
     Swal.fire({
@@ -54,6 +68,10 @@ const SelectedClass = () => {
       })
    
   };
+
+  
+
+  
 
   console.log(selectClass);
 
@@ -103,6 +121,7 @@ const SelectedClass = () => {
             closeModal={closeModal}
             refetch={refetch}
           ></FeedbackModal> */}
+          <PaymentModal openModal={openModal} isOpen={isOpen} closeModal={closeModal}></PaymentModal>
         </div>
       </div>
     </div>
