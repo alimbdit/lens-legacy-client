@@ -170,7 +170,7 @@ const Login = () => {
               </div>
               <p className="mt-4">
                 Don&apos;t have an account?{" "}
-                <Link className="text-info underline" to="/signup">
+                <Link className="text-info underline" to="/signup" state={{ from: location.state }}>
                   Sign Up
                 </Link>
               </p>

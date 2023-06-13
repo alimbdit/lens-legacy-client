@@ -37,6 +37,7 @@ const SignUp = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.from?.pathname;
+  
 
   const onSubmit = (data) => {
     const { name, email, photo, role, password } = data;
@@ -72,7 +73,7 @@ const SignUp = () => {
               }
             })
 
-            console.log("profile update");
+            // console.log("profile update");
             
           })
           .catch((err) => {
