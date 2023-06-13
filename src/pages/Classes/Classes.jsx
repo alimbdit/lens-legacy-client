@@ -78,6 +78,8 @@ const Classes = () => {
       <h1 className="text-5xl font-bold my-4 text-center">
         Our Classes
       </h1>
+      <p className="text-center w-3/5 mx-auto text-lg py-3">
+Photography classes teach exposure, composition, lighting, and equipment, while exploring genres and encouraging experimentation.</p>
 
       <div className="px-5 grid grid-cols-1 lg:grid-cols-2 gap-5  mt-10">
         {allClass &&

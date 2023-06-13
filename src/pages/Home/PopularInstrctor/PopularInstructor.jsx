@@ -16,8 +16,9 @@ const PopularInstructor = () => {
   return (
     <div className=" bg-info bg-opacity-5 lg:px-20 lg:pb-20 lg:pt-5 lg:my-20">
       <h1 className="text-5xl font-bold my-4 text-center">
-        Popular Instructor
+        Popular Instructors
       </h1>
+      <p className="text-center w-3/5 mx-auto text-lg py-3">Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
       <div className="">
         <div className="mt-10 px-5 lg:px-10 grid grid-cols-1 gap-5 lg:gap-10 md:grid-cols-2 lg:grid-cols-3 ">
           {instructors &&

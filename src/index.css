@@ -23,3 +23,7 @@
 .btn-manage-disabled{
     @apply border-2 text-stone-500 border-stone-500 bg-stone-700 rounded px-3 py-2 font-semibold transition-all
 }
+
+.quote-input{
+    @apply bg-transparent rounded-none focus:border-b-2 focus:border-t-0 focus:border-l-0 focus:border-r-0 border-b border-t-0 border-l-0 border-r-0 focus:ring-0 placeholder:text-white border-b-white
+}
