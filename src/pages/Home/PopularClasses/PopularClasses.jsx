@@ -18,7 +18,7 @@ const {user} = useAuth()
         }
     })
 
-    console.log(popularClass)
+    // console.log(popularClass)
     if(isPopularLoading){
         return <Loading></Loading>
     }

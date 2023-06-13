@@ -18,8 +18,8 @@ const Dashboard = () => {
   const { user } = useAuth();
   const [isAdmin, isAdminLoading] = useAdmin();
 const [isInstructor, isInstructorLoading] = useInstructor();
-  console.log(isAdmin, 'admin')
-  console.log(isInstructor, 'isInstructor')
+  // console.log(isAdmin, 'admin')
+  // console.log(isInstructor, 'isInstructor')
 
   const studentNavOptions = (
     <>

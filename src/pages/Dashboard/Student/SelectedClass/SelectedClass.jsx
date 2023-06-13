@@ -35,7 +35,7 @@ const SelectedClass = () => {
   }
 
   const handlePayment = (item) => {
-    console.log(item)
+    // console.log(item)
     refetch()
 
   };
@@ -73,7 +73,7 @@ const SelectedClass = () => {
 
   
 
-  console.log(selectClass);
+  // console.log(selectClass);
 
   if (loading || isSelectLoading) {
     return <Loading></Loading>;

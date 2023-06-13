@@ -40,7 +40,7 @@ const Login = () => {
   const onSubmit = (data) => {
     setLoginError("");
     setLoginSuccess("");
-    console.log(data);
+    // console.log(data);
     const { email, password } = data;
     logIn(email, password)
       .then((result) => {
@@ -61,7 +61,7 @@ const Login = () => {
     setLoginSuccess("");
     googleLogin()
       .then((result) => {
-        console.log(result)
+        // console.log(result)
         const savedUser = {name: result?.user?.displayName, email:result?.user?.email, photo: result?.user?.photoURL || defaultPhoto, role:"student" };
         fetch(`${import.meta.env.VITE_BASE_URL}/newUsers`, {
           method: "POST",

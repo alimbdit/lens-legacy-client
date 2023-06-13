@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { motion } from 'framer-motion';
 
 const FeedbackModal = ({ openModal, isOpen, closeModal, feedbackId, refetch }) => {
-  console.log(feedbackId, "modal");
+  // console.log(feedbackId, "modal");
   const [axiosSecure] = useAxiosSecure();
 
   const handleFeedback = async (event) => {
@@ -15,7 +15,7 @@ const FeedbackModal = ({ openModal, isOpen, closeModal, feedbackId, refetch }) =
     await axiosSecure.put(`/feedback/${feedbackId}`, { feedback })
     .then(data => {
         
-        console.log(data.data)
+        // console.log(data.data)
         if(data.data.modifiedCount > 0){
             Swal.fire({
                 position: 'center',

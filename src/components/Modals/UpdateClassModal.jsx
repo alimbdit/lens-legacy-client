@@ -18,7 +18,7 @@ const UpdateClassModal = ({ isOpen, closeModal, updateItem, refetch }) => {
 
   const [axiosSecure] = useAxiosSecure();
 
-  console.log(updateItem);
+  // console.log(updateItem);
   const hosting_imag_url = `https://api.imgbb.com/1/upload?key=${
     import.meta.env.VITE_IMAGE_UPLOAD_TOKEN
   }`
@@ -34,7 +34,7 @@ const UpdateClassModal = ({ isOpen, closeModal, updateItem, refetch }) => {
     const price = form.newPrice.value;
     const seat = form.newSeat.value;
     const image = form.image.files;
-    console.log(image.length);
+    // console.log(image.length);
 
     const formData = new FormData();
     formData.append("image", image[0]);
@@ -46,7 +46,7 @@ const UpdateClassModal = ({ isOpen, closeModal, updateItem, refetch }) => {
       })
         .then((res) => res.json())
         .then((result) => {
-          console.log(result);
+          // console.log(result);
           if (result.success) {
             const imgUrl = result.data.display_url;
             const newClass = {
@@ -57,7 +57,7 @@ const UpdateClassModal = ({ isOpen, closeModal, updateItem, refetch }) => {
             };
 
             axiosSecure.put(`/updateClass/${_id}`, newClass).then((data) => {
-              console.log(data);
+              // console.log(data);
               if (data.data.modifiedCount > 0) {
                 Swal.fire(sweetAlert);
                 refetch();
@@ -74,7 +74,7 @@ const UpdateClassModal = ({ isOpen, closeModal, updateItem, refetch }) => {
         imgUrl,
       };
       axiosSecure.put(`/updateClass/${_id}`, newClass).then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.data.modifiedCount > 0) {
           Swal.fire(sweetAlert);
           refetch();

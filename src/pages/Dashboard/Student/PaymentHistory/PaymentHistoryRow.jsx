@@ -4,7 +4,7 @@ import moment from 'moment';
 const PaymentHistoryRow = ({ history, index }) => {
     const { transactionId, price, date, clsName} = history;
     const newDate =  moment(date).format(" hh:mm A, Do-MMM-YYYY ")
-    console.log(newDate)
+    // console.log(newDate)
     return (
         <>
         <tr className="">

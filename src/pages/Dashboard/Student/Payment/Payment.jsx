@@ -10,7 +10,7 @@ const Payment = () => {
   const { user } = useAuth();
 
   const location = useLocation();
-  console.log(location.state);
+  // console.log(location.state);
   const item = location.state;
 
   return (

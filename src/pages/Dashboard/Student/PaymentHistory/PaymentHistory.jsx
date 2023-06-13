@@ -18,7 +18,7 @@ const PaymentHistory = () => {
             return result.data
         }
     })
-    console.log(paymentHistory)
+    // console.log(paymentHistory)
 
     if(isHistoryLoading){
         return <Loading></Loading>

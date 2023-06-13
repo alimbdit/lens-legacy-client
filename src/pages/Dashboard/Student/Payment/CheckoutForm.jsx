@@ -66,7 +66,7 @@ const CheckoutForm = ({ item }) => {
       });
 
     if (confirmError) {
-      console.log(confirmError);
+      // console.log(confirmError);
       setCardError(confirmError);
     }
     setProcessing(false);
@@ -83,7 +83,7 @@ const CheckoutForm = ({ item }) => {
         classId: _id,
       };
       axiosSecure.post("/payments", payment).then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         if(res.data?.insertedId){
             Swal.fire({
                 position: 'center',

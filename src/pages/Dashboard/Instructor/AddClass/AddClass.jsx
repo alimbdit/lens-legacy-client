@@ -31,7 +31,7 @@ const AddClass = () => {
     })
     .then(res => res.json())
     .then(result  => {
-        console.log(result)
+        // console.log(result)
         if(result.success){
             const imgUrl = result.data.display_url;
             // console.log(imgUrl)
