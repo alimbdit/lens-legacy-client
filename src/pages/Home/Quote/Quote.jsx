@@ -1,7 +1,5 @@
 import "./Quote.css";
 import { useForm } from "react-hook-form";
-import img from "../../../assets/images/Quote.jpg";
-import img1 from "../../../assets/images/Quote1.jpg";
 import img2 from "../../../assets/images/Quote2.jpg";
 
 const Quote = () => {
@@ -14,7 +12,7 @@ const Quote = () => {
   const onSubmit = (data) => console.log(data);
 
   return (
-    <section className=" lg:px-20 lg:pb-20 lg:pt-5 my-16 lg:my-20">
+    <section className=" lg:px-20 lg:pb-32 lg:pt-5 py-16 lg:py-32">
       <div className="quote-bg bg-fixed  w-full rounded">
         <div className="bg-stone-950 bg-opacity-60 p-20 w-full  flex flex-col lg:flex-row items-center">
           <div className="w-full flex justify-center">

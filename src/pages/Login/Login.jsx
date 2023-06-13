@@ -181,7 +181,6 @@ const Login = () => {
             <div className="flex justify-center">
               <motion.button whileHover={{ scale:  1.05 }} whileTap={{ scale:  0.95 }}
                 onClick={continueWithGoogle}
-                onClick={continueWithGoogle}
                 className="border-2 rounded-full text-white bg-primary bg-opacity-30 p-[2px] hover:bg-opacity-50"
               >
                 <FcGoogle className="text-4xl cursor-pointer" />

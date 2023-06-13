@@ -19,11 +19,11 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white pt-7 px-7 lg:px-10 lg:pt-10 ">
+    <footer className="bg-gray-800 dark:bg-gray-950 text-white pt-7 px-7 lg:px-10 lg:pt-10 ">
       <div className="flex flex-col gap-7 lg:flex-row justify-between">
         <div className="flex flex-col items-center">
           <div className="flex flex-col gap-3 items-center">
-            <img src={logo} className="w-24" alt="Lens Legacy Logo" />
+            <Link to='/'><img src={logo} className="w-24" alt="Lens Legacy Logo" /></Link>
             <h2 className="text-5xl font-bold">Lens Legacy</h2>
           </div>
           <div className="flex gap-7 my-5">

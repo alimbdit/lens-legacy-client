@@ -5,7 +5,7 @@ const ClassCard = ({item, isInstructor, isAdmin, handleSelect}) => {
     const {_id, clsName, email, price, seat, status, imgUrl, instructor} = item;
 
   return (
-    <div className={`card w-full lg:card-side bg-opacity-90 ${seat ? "bg-[#025464]" : "bg-red-600"} rounded shadow-xl `}>
+    <div className={`card w-full lg:card-side bg-opacity-90 ${seat ? "bg-[#025464] dark:bg-cyan-700" : "bg-red-600"} rounded shadow-xl `}>
      <div className="w-full"> <figure className="relative h-72">
         <img
         className="object-cover w-full h-full rounded-ss rounded-se lg:rounded-se-none lg:rounded-l"

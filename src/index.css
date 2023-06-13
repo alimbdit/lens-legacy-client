@@ -7,7 +7,7 @@
     @apply text-lg text-secondary underline underline-offset-8
 }
 .inactive {
-    @apply text-lg text-black
+    @apply text-lg text-black dark:text-white
 }
 
 .active-dashboard {

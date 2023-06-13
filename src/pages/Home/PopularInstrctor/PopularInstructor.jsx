@@ -14,7 +14,7 @@ const PopularInstructor = () => {
   });
 
   return (
-    <div className=" bg-info bg-opacity-5 lg:px-20 lg:pb-20 pt-5 my-16 lg:my-20">
+    <div className=" bg-info bg-opacity-5 lg:px-20 lg:pt-20 pt-5 my-16 lg:pb-28 lg:my-20 dark:text-white">
       <h1 className="text-5xl font-bold my-4 text-center">
         Popular Instructors
       </h1>

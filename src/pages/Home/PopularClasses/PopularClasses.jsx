@@ -24,7 +24,7 @@ const {user} = useAuth()
     }
 
   return (
-    <div className="lg:px-10 lg:mt-40 mb-16 mt-16 lg:mb-20 lg:pb-20">
+    <div className="lg:px-10 lg:mt-32 mb-16 mt-16 lg:mb-20 lg:pb-10 dark:text-white">
       <h1 className="text-5xl font-bold my-4 text-center">
         Popular Classes
       </h1>

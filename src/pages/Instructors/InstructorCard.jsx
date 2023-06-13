@@ -15,7 +15,7 @@ const InstructorCard = ({ instructor }) => {
           <h2 className="card-title text-2xl font-bold">{name}</h2>
           <p className="text-lg pb-1">{email}</p>
           <div className="card-actions ">
-            <motion.button whileHover={{ scale:  1.05 }} whileTap={{ scale:  0.95 }} className="btn btn-sm hover:bg-info hover:border-info border-2 border-info bg-transparent text-info  hover:text-white text-base">See More</motion.button>
+            <motion.button whileHover={{ scale:  1.05 }} whileTap={{ scale:  0.95 }} className="btn btn-sm dark:border-white dark:text-white hover:bg-info hover:border-info border-2 border-info bg-transparent text-info  hover:text-white text-base">See More</motion.button>
           </div>
         </div>
       </div>
