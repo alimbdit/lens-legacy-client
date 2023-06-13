@@ -4,6 +4,7 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
+import { motion } from 'framer-motion';
 
 import regAni from "../../../public/reg.json";
 import useAuth from "../../hooks/useAuth";
@@ -128,12 +129,12 @@ const Login = () => {
                     })}
                   />
                   {show ? (
-                    <AiOutlineEye
+                    <AiOutlineEyeInvisible
                       onClick={() => setShow(!show)}
                       className="h-6 w-6  cursor-pointer absolute text-gray-800 top-[13px] right-3"
                     />
                   ) : (
-                    <AiOutlineEyeInvisible
+                    <AiOutlineEye
                       onClick={() => setShow(!show)}
                       className="h-6 w-6  cursor-pointer absolute text-gray-800 top-[13px] right-3"
                     />
@@ -178,12 +179,13 @@ const Login = () => {
             {/* social login */}
             <div className="divider">OR</div>
             <div className="flex justify-center">
-              <button
+              <motion.button whileHover={{ scale:  1.05 }} whileTap={{ scale:  0.95 }}
                 onClick={continueWithGoogle}
-                className="border-2 rounded-full bg-primary bg-opacity-30 p-[2px] hover:bg-opacity-50"
+                onClick={continueWithGoogle}
+                className="border-2 rounded-full text-white bg-primary bg-opacity-30 p-[2px] hover:bg-opacity-50"
               >
                 <FcGoogle className="text-4xl cursor-pointer" />
-              </button>
+              </motion.button>
             </div>
           </div>
         </div>

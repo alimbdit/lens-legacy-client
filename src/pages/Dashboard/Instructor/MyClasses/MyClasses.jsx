@@ -6,6 +6,7 @@ import { BiEdit } from "react-icons/bi";
 
 import UpdateClassModal from "../../../../components/Modals/UpdateClassModal";
 import Loading from "../../../../components/Loading/Loading";
+import { motion } from 'framer-motion';
 
 const MyClasses = () => {
   const { user, loading } = useAuth();
@@ -111,7 +112,7 @@ const MyClasses = () => {
                       </p>
                     </td>
                     <th>
-                      <button
+                      <motion.button whileHover={{ scale: 1.05}} whileTap={{ scale: 0.95 }}
                         onClick={() => {
                           openModal();
                           setUpdateItem(item);
@@ -119,7 +120,7 @@ const MyClasses = () => {
                         className="bg-info hover:bg-opacity-75 p-2 rounded-lg  "
                       >
                         <BiEdit className="text-3xl text-white" />
-                      </button>
+                      </motion.button>
                     </th>
                   </tr>
                 ))}

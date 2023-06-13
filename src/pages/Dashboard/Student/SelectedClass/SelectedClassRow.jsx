@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
+import { motion } from 'framer-motion';
 
 
 const SelectedClassRow = ({item, index, handleDelete, handlePayment}) => {
@@ -41,12 +42,12 @@ const SelectedClassRow = ({item, index, handleDelete, handlePayment}) => {
          
             <th >
               <div className="flex flex-col items-center justify-center gap-2">
-              <button onClick={()=>{ 
+              <motion.button whileHover={{ scale: `${!item?.seat ? 1 : 1.05}` }} whileTap={{ scale: `${!item?.seat ? 1 : 0.95}` }} onClick={()=>{ 
                 // openModal()
                 navigate('/dashboard/payment', { state: item })
                 handlePayment(item)
-              }} disabled={!item?.seat} className={`btn  ${!item?.seat ? 'btn-disabled': 'btn-info hover:bg-transparent hover:text-info border-2 text-white' }  font-semibold  w-full  btn-sm h-10 text-base`}>Pay</button>
-              <button  onClick={()=> handleDelete(item)} className="btn btn-warning hover:bg-transparent hover:text-warning font-semibold border-2 w-full text-white btn-sm h-10 text-base">Delete</button>
+              }} disabled={!item?.seat} className={`btn  ${!item?.seat ? 'btn-disabled': 'btn-info hover:bg-transparent hover:text-info border-2 text-white' }  font-semibold  w-full  btn-sm h-10 text-base`}>Pay</motion.button>
+              <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={()=> handleDelete(item)} className="btn btn-warning hover:bg-transparent hover:text-warning font-semibold border-2 w-full text-white btn-sm h-10 text-base">Delete</motion.button>
               
               </div>
             </th>

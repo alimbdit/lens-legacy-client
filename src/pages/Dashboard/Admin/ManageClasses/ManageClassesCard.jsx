@@ -1,4 +1,8 @@
+import { motion } from 'framer-motion';
+
+
 const ManageClassesCard = ({item,  handleApprove, handleDeny, openModal, setFeedbackId}) => {
+
     const {_id, clsName, email, price, seat, status, imgUrl, instructor} = item;
   return (
     <div className="card w-full lg:card-side bg-[#025464] rounded shadow-xl ">
@@ -17,12 +21,12 @@ const ManageClassesCard = ({item,  handleApprove, handleDeny, openModal, setFeed
         <p>Fees : ${price}</p>
         <p className="capitalize">Status : {status}</p>
         <div className="card-actions justify-end my-2">
-          <button onClick={()=>handleApprove(item)} disabled={status !== 'pending'} className={status === 'pending'?"btn-manage":"btn-manage-disabled"}>Approve</button>
-          <button onClick={()=> handleDeny(item)} disabled={status !== 'pending'} className={status === 'pending'?"btn-manage":"btn-manage-disabled"}>Deny</button>
-          <button onClick={()=>{
+          <motion.button whileHover={{ scale: `${status !== 'pending'? 1 :1.05}` }} whileTap={{ scale: `${status !== 'pending'? 1 :0.95}` }} onClick={()=>handleApprove(item)} disabled={status !== 'pending'} className={status === 'pending'?"btn-manage":"btn-manage-disabled"}>Approve</motion.button>
+          <motion.button whileHover={{ scale: `${status !== 'pending'? 1 :1.05}` }} whileTap={{ scale: `${status !== 'pending'? 1 :0.95}` }} onClick={()=> handleDeny(item)} disabled={status !== 'pending'} className={status === 'pending'?"btn-manage":"btn-manage-disabled"}>Deny</motion.button>
+          <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={()=>{
                     openModal()
                     setFeedbackId(_id)
-                  }} className="btn-manage" >Feedback</button>
+                  }} className="btn-manage" >Feedback</motion.button>
         </div>
       </div>
     </div>

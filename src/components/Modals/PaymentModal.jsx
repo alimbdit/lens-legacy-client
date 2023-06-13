@@ -1,5 +1,6 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react';
+import { motion } from 'framer-motion';
 
 const PaymentModal = ({ isOpen, setIsOpen, closeModal }) => {
   return (
@@ -40,19 +41,19 @@ const PaymentModal = ({ isOpen, setIsOpen, closeModal }) => {
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      Your payment has been successfully submitted. We’ve sent
+                      Your payment has been successfully submitted. We&apos;ve sent
                       you an email with all of the details of your order.
                     </p>
                   </div>
 
                   <div className="mt-4">
-                    <button
+                    <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                       type="button"
                       className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       onClick={closeModal}
                     >
                       Got it, thanks!
-                    </button>
+                    </motion.button>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

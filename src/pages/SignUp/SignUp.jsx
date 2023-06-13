@@ -7,6 +7,7 @@ import { FcGoogle } from "react-icons/fc";
 import regAni from "../../../public/reg.json";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { motion } from 'framer-motion';
 
 const defaultPhoto = "https://i.ibb.co/fNy36Zz/user.png";
 
@@ -181,12 +182,12 @@ const SignUp = () => {
                     })}
                   />
                   {show ? (
-                    <AiOutlineEye
+                    <AiOutlineEyeInvisible
                       onClick={() => setShow(!show)}
                       className="h-6 w-6  cursor-pointer absolute text-gray-800 top-[13px] right-3"
                     />
                   ) : (
-                    <AiOutlineEyeInvisible
+                    <AiOutlineEye
                       onClick={() => setShow(!show)}
                       className="h-6 w-6  cursor-pointer absolute text-gray-800 top-[13px] right-3"
                     />
@@ -218,12 +219,12 @@ const SignUp = () => {
                     })}
                   />
                   {confirmShow ? (
-                    <AiOutlineEye
+                    <AiOutlineEyeInvisible
                       onClick={() => setConfirmShow(!confirmShow)}
                       className="h-6 w-6  cursor-pointer absolute text-gray-800 top-[13px] right-3"
                     />
                   ) : (
-                    <AiOutlineEyeInvisible
+                    <AiOutlineEye
                       onClick={() => setConfirmShow(!confirmShow)}
                       className="h-6 w-6  cursor-pointer absolute text-gray-800 top-[13px] right-3"
                     />
@@ -254,7 +255,7 @@ const SignUp = () => {
               />
               <div className="form-control mt-4">
                 <input
-                  className="btn btn-primary"
+                  className="btn btn-primary text-white"
                   type="submit"
                   value="Sign Up "
                 />
@@ -270,12 +271,12 @@ const SignUp = () => {
             {/* social login */}
             <div className="divider">OR</div>
             <div className="flex justify-center">
-              <button
+              <motion.button whileHover={{ scale:  1.05 }} whileTap={{ scale:  0.95 }}
                 onClick={continueWithGoogle}
-                className="border-2 cursor-pointer rounded-full bg-primary bg-opacity-30 p-[2px] hover:bg-opacity-50"
+                className="border-2 cursor-pointer rounded-full bg-primary bg-opacity-30 p-[2px] hover:bg-opacity-50 text-white"
               >
                 <FcGoogle className="text-4xl " />
-              </button>
+              </motion.button>
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@ import { Fragment} from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 // import { toast } from "react-hot-toast";
+import { motion } from 'framer-motion';
 
 const FeedbackModal = ({ openModal, isOpen, closeModal, feedbackId, refetch }) => {
   console.log(feedbackId, "modal");
@@ -72,7 +73,7 @@ const FeedbackModal = ({ openModal, isOpen, closeModal, feedbackId, refetch }) =
                         placeholder="Feedback"
                       ></textarea>
                        <div className="mt-4 flex justify-center">
-                      <input
+                      <motion.input whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                         type="submit"
                         value="SEND"
                         className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 cursor-pointer"
@@ -82,7 +83,7 @@ const FeedbackModal = ({ openModal, isOpen, closeModal, feedbackId, refetch }) =
                     </form>
                   </div>
                   <div className="mt-4 fixed top-0 right-4">
-                    <button className="btn btn-circle  btn-sm bg-red-500 hover:bg-red-600" onClick={closeModal}>
+                    <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="btn btn-circle  btn-sm bg-red-500 hover:bg-red-600" onClick={closeModal}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-6 w-6"
@@ -97,7 +98,7 @@ const FeedbackModal = ({ openModal, isOpen, closeModal, feedbackId, refetch }) =
                           d="M6 18L18 6M6 6l12 12"
                         />
                       </svg>
-                    </button>
+                    </motion.button>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

@@ -1,10 +1,12 @@
 import { Link, NavLink} from "react-router-dom";
 import logo from "../../../../public/logo.png";
 import useAuth from "../../../hooks/useAuth";
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
 
   const {user, logOut} = useAuth()
+  console.log(user)
 
   const navOptions = <><li>
   <NavLink
@@ -92,14 +94,15 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className=" dropdown-content text-center mt-3 p-2 shadow bg-base-100 rounded-box w-24 hover:bg-primary duration-300 hover:text-white cursor-pointer"
+              className=" z-50 dropdown-content text-center text-primary  mt-1 p-2 shadow bg-base-100 rounded-box w-24 hover:bg-primary border-2 border-primary duration-300 hover:text-white cursor-pointer"
             >
               <li>
-                <button onClick={logOut} className="font-semibold ">Logout</button>
+                <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={logOut} className="font-semibold ">Logout</motion.button>
               </li>
             </ul>
-          </div> : <Link className="btn btn-primary" to='/login'>Login</Link>
+          </div> : <Link className="btn btn-primary text-white" to='/login'>Login</Link>
           }
+
         </div>
       </div>
     </>

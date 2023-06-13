@@ -1,4 +1,5 @@
 
+import { motion } from 'framer-motion';
 
 const BannerSlide = ({slide}) => {
     return (
@@ -17,12 +18,12 @@ const BannerSlide = ({slide}) => {
                 growth, and endless possibilities.
               </p>
               <div className="flex flex-col lg:flex-row gap-3 justify-center">
-                <button className="btn  btn-info font-bold text-white ">
+                <motion.button whileHover={{ scale:  1.05 }} whileTap={{ scale:  0.95 }} className="btn  btn-info font-bold text-white ">
                   Discover More
-                </button>
-                <button className="btn btn-outline btn-info font-bold border-2">
+                </motion.button>
+                <motion.button whileHover={{ scale:  1.05 }} whileTap={{ scale:  0.95 }} className="btn btn-outline btn-info font-bold border-2">
                   Latest Project
-                </button>
+                </motion.button>
               </div>
             </div>
           </div>

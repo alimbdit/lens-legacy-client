@@ -1,6 +1,7 @@
 import useAdmin from "../../../hooks/useAdmin";
 import useAuth from "../../../hooks/useAuth";
 import useInstructor from "../../../hooks/useInstructor";
+import { motion } from 'framer-motion';
 
 const DashboardHome = () => {
   const { user } = useAuth();
@@ -16,7 +17,7 @@ const DashboardHome = () => {
             <p className="py-6 text-4xl capitalize">
               You are a {isAdmin ? "Admin" : isInstructor ? "Instructor" : "Student"} In our Site.
             </p>
-            <button className="btn btn-primary">Get Started</button>
+            <motion.button whileHover={{ scale:  1.05 }} whileTap={{ scale: 0.95 }} className="btn btn-primary text-white">Get Started</motion.button>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 
+import { motion } from 'framer-motion';
 
 const ClassCard = ({item, isInstructor, isAdmin, handleSelect}) => {
     const {_id, clsName, email, price, seat, status, imgUrl, instructor} = item;
@@ -21,7 +22,7 @@ const ClassCard = ({item, isInstructor, isAdmin, handleSelect}) => {
         <p>Fees : ${price}</p>
         </div>
         <div onClick={()=> handleSelect(_id)} className="card-actions justify-end mt-auto">
-          <button  disabled={!seat || isInstructor || isAdmin} className={!seat || isAdmin || isInstructor ? "btn-manage-disabled" : "btn-manage"}>Select</button>
+          <motion.button whileHover={{ scale: `${!seat || isInstructor || isAdmin ? 1 :1.05}` }} whileTap={{ scale: `${!seat || isInstructor || isAdmin ? 1 :0.95}` }} disabled={!seat || isInstructor || isAdmin} className={!seat || isAdmin || isInstructor ? "btn-manage-disabled" : "btn-manage"}>Select</motion.button>
     
 
         </div>

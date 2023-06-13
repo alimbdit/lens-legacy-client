@@ -1,6 +1,6 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useState } from "react";
-
+import { motion } from 'framer-motion';
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
@@ -21,7 +21,8 @@ const UpdateClassModal = ({ isOpen, closeModal, updateItem, refetch }) => {
   console.log(updateItem);
   const hosting_imag_url = `https://api.imgbb.com/1/upload?key=${
     import.meta.env.VITE_IMAGE_UPLOAD_TOKEN
-  }`;
+  }`
+;
 
   const { _id, price, seat, clsName, imgUrl } = updateItem;
   //   console.log(price, className)
@@ -172,7 +173,7 @@ const UpdateClassModal = ({ isOpen, closeModal, updateItem, refetch }) => {
                       </div>
 
                       <div className="form-control mt-6">
-                        <input
+                        <motion.input whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                           className="btn btn-primary"
                           type="submit"
                           value="UPDATE"
@@ -182,7 +183,7 @@ const UpdateClassModal = ({ isOpen, closeModal, updateItem, refetch }) => {
                   </div>
 
                   <div className="mt-4 fixed top-0 right-4">
-                    <button className="btn btn-circle btn-sm bg-red-500 hover:bg-red-600" onClick={closeModal}>
+                    <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="btn btn-circle btn-sm bg-red-500 hover:bg-red-600" onClick={closeModal}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-6 w-6"
@@ -197,7 +198,7 @@ const UpdateClassModal = ({ isOpen, closeModal, updateItem, refetch }) => {
                           d="M6 18L18 6M6 6l12 12"
                         />
                       </svg>
-                    </button>
+                    </motion.button>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

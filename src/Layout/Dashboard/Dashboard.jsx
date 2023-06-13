@@ -12,6 +12,7 @@ import { SiGoogleclassroom } from "react-icons/si";
 import useAuth from "../../hooks/useAuth";
 import useAdmin from "../../hooks/useAdmin";
 import useInstructor from "../../hooks/useInstructor";
+import { motion } from 'framer-motion';
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -124,12 +125,12 @@ const [isInstructor, isInstructorLoading] = useInstructor();
         <div className="drawer-side">
           <label htmlFor="dashboard-menu" className="drawer-overlay"></label>
 
-          <ul className="menu p-4 w-80 h-full bg-primary text-base-content">
+          <ul className="menu p-4 w-80 h-full bg-primary bg-opacity-70 text-base-content">
             {/* Sidebar content here */}
             <div className="text-center my-4">
               <div className="avatar">
                 <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                  <img src={user?.photoURL} />
+                  <motion.img whileHover={{ scale:  1.05 }} whileTap={{ scale:  0.95 }} src={user?.photoURL} />
                 </div>
               </div>
               <h3 className="text-lg">{user?.displayName}</h3>

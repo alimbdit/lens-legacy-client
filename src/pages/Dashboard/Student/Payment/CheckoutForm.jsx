@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { motion } from 'framer-motion';
 
 const CheckoutForm = ({ item }) => {
   const { user } = useAuth();
@@ -117,13 +118,13 @@ const CheckoutForm = ({ item }) => {
             },
           }}
         />
-        <button
+        <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
           className="btn btn-primary  my-4"
           type="submit"
           disabled={!stripe || !clientSecret || processing}
         >
           Pay
-        </button>
+        </motion.button>
       </form>
       {cardError && <p className="text-red-600">{cardError}</p>}
       {transactionId && (
