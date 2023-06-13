@@ -70,12 +70,12 @@ const Navbar = () => {
               {navOptions}
             </ul>
           </div>
-          <div className="flex justify-center items-center gap-2">
+          <Link to='/' className="flex justify-center items-center gap-2">
             <img className="w-8 h-8" src={logo} alt="" />
             <h1 className="text-2xl lg:text-4xl font-extrabold">
               <span className="text-secondary">Lens</span> <span >Legacy</span>
             </h1>
-          </div>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="flex gap-5 px-1">

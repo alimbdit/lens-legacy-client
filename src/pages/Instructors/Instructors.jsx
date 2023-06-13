@@ -27,7 +27,7 @@ const Instructors = () => {
   // }, [axiosSecure])
 
   return (
-    <div className="lg:px-10">
+    <div className="lg:px-10 mb-20">
       <h1 className="text-5xl font-bold my-4 text-center">
         Our Instructors
       </h1>

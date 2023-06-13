@@ -14,11 +14,11 @@ const Quote = () => {
   const onSubmit = (data) => console.log(data);
 
   return (
-    <section className=" lg:px-20 lg:pb-20 lg:pt-5 lg:my-20">
+    <section className=" lg:px-20 lg:pb-20 lg:pt-5 my-16 lg:my-20">
       <div className="quote-bg bg-fixed  w-full rounded">
-        <div className="bg-stone-950 bg-opacity-60 p-20 w-full  flex items-center">
+        <div className="bg-stone-950 bg-opacity-60 p-20 w-full  flex flex-col lg:flex-row items-center">
           <div className="w-full flex justify-center">
-            <img className="w-1/2 object-cover rounded shadow-lg" src={img2} alt="" />
+            <img className="w-3/4 lg:w-1/2 object-cover rounded shadow-lg" src={img2} alt="" />
           </div>
           <div className="w-full flex items-center ">
             <div className="w-full  text-white ml-auto">
@@ -32,7 +32,7 @@ const Quote = () => {
                 onSubmit={handleSubmit(onSubmit)}
                 className="py-5 space-y-3 w-full"
               >
-                <div className="flex w-full gap-5">
+                <div className="flex flex-col lg:flex-row w-full gap-5">
                   <input
                     type="text"
                     placeholder="First Name"
@@ -50,7 +50,7 @@ const Quote = () => {
                     {...register("lastName")}
                   />
                 </div>
-                <div className="flex gap-5">
+                <div className="flex flex-col lg:flex-row gap-5">
                   <input
                     type="text"
                     placeholder="Course Name"
@@ -71,10 +71,10 @@ const Quote = () => {
                     <span>This field is required</span>
                   )}
                 </div>
-                <div className="flex w-full justify-between items-center">
+                <div className="flex flex-col lg:flex-row gap-5 w-full justify-between items-center">
                   <textarea
                     type="text"
-                    className="textarea quote-input w-[277px]"
+                    className="textarea quote-input lg:w-[277px] w-full max-w-xs"
                     placeholder="Message"
                     {...register("message")}
                   ></textarea>
@@ -82,7 +82,7 @@ const Quote = () => {
                   <input
                     type="submit"
                     value="Request A Quote"
-                    className="w-[277px] max-w-xs btn btn-info border-2 text-lg hover:border-2 hover:border-info hover:bg-transparent hover:text-info font-bold text-white ml-5"
+                    className="lg:w-[277px] w-full  max-w-xs btn btn-info border-2 text-lg hover:border-2 hover:border-info hover:bg-transparent hover:text-info font-bold text-white lg:ml-5"
                   />
                 </div>
               </form>
