@@ -24,6 +24,7 @@ const CheckoutForm = ({ item }) => {
     if (price > 0) {
       axiosSecure.post("/create-payment-intent", { price }).then((res) => {
         setClientSecret(res.data.clientSecret);
+        // console.log(res.data.clientSecret)
       });
     }
   }, [price, axiosSecure]);
@@ -67,10 +68,11 @@ const CheckoutForm = ({ item }) => {
 
     if (confirmError) {
       // console.log(confirmError);
-      setCardError(confirmError);
+      setCardError(confirmError.message);
     }
     setProcessing(false);
-    if (paymentIntent.status === "succeeded") {
+    // console.log(paymentIntent)
+    if (paymentIntent?.status === "succeeded") {
       setTransactionId(paymentIntent.id);
 
       // save payment information to the server
@@ -96,6 +98,7 @@ const CheckoutForm = ({ item }) => {
         }       
       });
     }
+   
   };
 
   return (
