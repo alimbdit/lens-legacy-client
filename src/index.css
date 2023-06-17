@@ -27,3 +27,7 @@
 .quote-input{
     @apply bg-transparent rounded-none focus:border-b-2 focus:border-t-0 focus:border-l-0 focus:border-r-0 border-b border-t-0 border-l-0 border-r-0 focus:ring-0 placeholder:text-white border-b-white
 }
+
+.parent-container{
+    @apply lg:px-20 lg:pt-20 pt-5 my-16 lg:pb-28 lg:my-20 dark:text-white
+}
