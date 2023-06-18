@@ -19,6 +19,8 @@ import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 import Payment from "../pages/Dashboard/Student/Payment/Payment";
 import InstructorRoute from "./InstructorRoute";
 import AdminRoute from "./AdminRoute";
+import AllFreeTutorials from "../pages/AllFreeTutorials/AllFreeTutorials";
+import Player from "../components/Player/Player";
 
 
 
@@ -48,6 +50,14 @@ export const router = createBrowserRouter([
         {
           path: '/instructors',
           element: <Instructors></Instructors>
+        },
+        {
+          path: '/tutorials',
+          element: <AllFreeTutorials></AllFreeTutorials>
+        },
+        {
+          path: '/player',
+          element: <Player></Player>
         },
       ]
     },
