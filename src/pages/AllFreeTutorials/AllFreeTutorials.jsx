@@ -4,7 +4,8 @@ import { useEffect } from "react";
 import Aos from "aos";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import TutorialCard from "../Home/FreeTutorials/TutorialCard";
+import TutorialCard from "../../components/TutorialCard/TutorialCard";
+
 
 
 const AllFreeTutorials = () => {

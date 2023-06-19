@@ -1,18 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
-import useAuth from "../../../hooks/useAuth";
+// import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import TutorialCard from "./TutorialCard";
+
 import { useEffect } from "react";
 import Aos from "aos";
 import { motion } from 'framer-motion';
 import {FaArrowRight} from 'react-icons/fa'
 import { useNavigate } from "react-router-dom";
+import TutorialCard from "../../../components/TutorialCard/TutorialCard";
+import Loading from "../../../components/Loading/Loading";
 
 
 const FreeTutorials = () => {
 
     const navigate = useNavigate()
-    const {user} = useAuth();
+    // const {user} = useAuth();
     const [axiosSecure] = useAxiosSecure()
 
     const {data:tutorials=[], isLoading: isTutorialLoading} = useQuery({
@@ -28,8 +30,12 @@ const FreeTutorials = () => {
         Aos.init({duration: 1000});
       }, [])
 
+      if(isTutorialLoading){
+        return <Loading></Loading>
+      }
+
     return (
-        <div className="parent-container bg-info bg-opacity-5">
+        <div className="lg:px-20 lg:pt-20 pt-5 mt-16 lg:pb-28 lg:mt-20 dark:text-white bg-info bg-opacity-5">
              <h1 className="text-5xl font-bold my-4 text-center">
         Free Tutorials
       </h1>

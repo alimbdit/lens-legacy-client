@@ -5,6 +5,7 @@ import Moment from "../Moment/Moment";
 import PopularClasses from "../PopularClasses/PopularClasses";
 import PopularInstructor from "../PopularInstrctor/PopularInstructor";
 import Quote from "../Quote/Quote";
+import Testimonials from "../Testimonials/Testimonials";
 
 
 
@@ -17,6 +18,7 @@ const Home = () => {
             <Moment></Moment>
             <FreeTutorials></FreeTutorials>
             {/* <Events></Events> */}
+            <Testimonials></Testimonials>
             <Quote></Quote>
      
         </div>
