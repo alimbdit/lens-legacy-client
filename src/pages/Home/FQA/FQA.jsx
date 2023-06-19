@@ -111,14 +111,14 @@ const FQA = () => {
         </div>
       </div>
       </div>
-      <div className="w-full">
-        <img src={img1} alt="" />
+      <div className="w-full px-5">
+        <img src={img1} alt="" className="" />
       <h3 className="dark:text-white text-3xl font-bold my-10 text-gray-800">
       WE ARE VERY <br />
       EXPERIENCED & PROFESSIONALS
       </h3>
  
-        <div className="space-y-3">
+        <div className="space-y-3 ">
         <div>
           <p className="text-xl font-bold py-1">SUPPORT TIPS</p>
         <input type="range" min={0} max="100" value="90" className="range range-warning range-xs" />
