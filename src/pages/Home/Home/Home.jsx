@@ -1,5 +1,6 @@
 import Banner from "../Banner/Banner";
-import Events from "../Events/Events";
+// import Events from "../Events/Events";
+import FQA from "../FQA/FQA";
 import FreeTutorials from "../FreeTutorials/FreeTutorials";
 import Moment from "../Moment/Moment";
 import PopularClasses from "../PopularClasses/PopularClasses";
@@ -20,6 +21,7 @@ const Home = () => {
             {/* <Events></Events> */}
             <Testimonials></Testimonials>
             <Quote></Quote>
+            <FQA></FQA>
      
         </div>
     );
