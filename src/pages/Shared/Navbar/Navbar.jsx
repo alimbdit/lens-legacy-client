@@ -62,6 +62,14 @@ const Navbar = () => {
     Classes
   </NavLink>
 </li>
+<li>
+  <NavLink
+    to="/contact"
+    className={({ isActive }) => (isActive ? "active" : "inactive")}
+  >
+    Contact
+  </NavLink>
+</li>
 {
   user && user.email && <li>
   <NavLink

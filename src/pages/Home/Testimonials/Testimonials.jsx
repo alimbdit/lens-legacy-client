@@ -28,8 +28,8 @@ const Testimonials = () => {
     
       <div className="lg:px-20 lg:pt-28 pt-5 lg:mb-28 lg:pb-28 dark:text-white  bg-gray-900 dark:bg-gray-950 text-white flex justify-center items-center">
         <Swiper
-          //   spaceBetween={30}
-          //   centeredSlides={true}
+            spaceBetween={30}
+            centeredSlides={true}
           autoplay={{
             delay: 2500,
             disableOnInteraction: false,

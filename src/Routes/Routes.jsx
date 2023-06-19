@@ -21,6 +21,7 @@ import InstructorRoute from "./InstructorRoute";
 import AdminRoute from "./AdminRoute";
 import AllFreeTutorials from "../pages/AllFreeTutorials/AllFreeTutorials";
 import Player from "../components/Player/Player";
+import ContactUs from "../pages/ContactUs/ContactUs";
 
 
 
@@ -58,6 +59,10 @@ export const router = createBrowserRouter([
         {
           path: '/player',
           element: <Player></Player>
+        },
+        {
+          path: '/contact',
+          element: <ContactUs></ContactUs>
         },
       ]
     },
