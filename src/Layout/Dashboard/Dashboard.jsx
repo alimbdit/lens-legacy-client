@@ -125,7 +125,7 @@ const [isInstructor, isInstructorLoading] = useInstructor();
         <div className="drawer-side">
           <label htmlFor="dashboard-menu" className="drawer-overlay"></label>
 
-          <ul className="menu p-4 w-80 h-full bg-primary bg-opacity-70 text-base-content">
+          <ul className="menu p-4 w-80 h-full bg-primary lg:bg-opacity-70 text-base-content">
             {/* Sidebar content here */}
             <div className="text-center my-4">
               <div className="avatar">

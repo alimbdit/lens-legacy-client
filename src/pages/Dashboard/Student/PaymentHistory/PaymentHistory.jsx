@@ -32,7 +32,7 @@ const PaymentHistory = () => {
   
         <div className="max-w-sm mt-7 lg:max-w-fit ">
           <div className="overflow-x-auto h-[450px] lg:h-[510px]">
-            <table className="table table-pin-rows table-zebra lg:table-fixed">
+            <table className="table lg:table-pin-rows table-zebra lg:table-fixed">
               <thead>
                 <tr className="text-xl">
                   {/* <th className="w-3">#</th> */}

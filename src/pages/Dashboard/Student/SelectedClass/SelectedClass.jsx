@@ -87,7 +87,7 @@ const SelectedClass = () => {
 
       <div className="max-w-sm lg:max-w-fit ">
         <div className="overflow-x-auto h-[450px] lg:h-[510px]">
-          <table className="table table-pin-rows">
+          <table className="table lg:table-pin-rows">
             <thead>
               <tr className="text-lg">
                 <th>#</th>

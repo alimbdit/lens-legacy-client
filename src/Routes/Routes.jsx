@@ -22,6 +22,7 @@ import AdminRoute from "./AdminRoute";
 import AllFreeTutorials from "../pages/AllFreeTutorials/AllFreeTutorials";
 import Player from "../components/Player/Player";
 import ContactUs from "../pages/ContactUs/ContactUs";
+import About from "../pages/About/About";
 
 
 
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
         {
           path: '/player',
           element: <Player></Player>
+        },
+        {
+          path: '/about',
+          element: <About></About>
         },
         {
           path: '/contact',
